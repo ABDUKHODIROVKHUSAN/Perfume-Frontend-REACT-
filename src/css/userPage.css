@@ -1,0 +1,243 @@
+.user-page {
+	width: 100%;
+	display: flex;
+	background: #f4f4f9;
+	font-family: 'Poppins', sans-serif;
+}
+
+/* Flex row for main page */
+.user-page .my-page-frame {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	padding: 50px 20px;
+	gap: 30px;
+}
+
+.my-page-frame .my-page-right {
+	margin-top: 75px;
+	order: -1;
+	width: 30%;
+	display: flex;
+	flex-direction: column;
+}
+
+.my-page-frame .my-page-left {
+	width: 70%;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Profile box */
+.user-page .order-info-box {
+	position: relative;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: #ffffff;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+	border-radius: 16px;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.user-page .order-info-box:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Avatar */
+.order-user-img .order-user-avatar {
+	width: 120px;
+	height: 120px;
+	margin-left: -10px;
+	border-radius: 50%;
+	object-fit: cover;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Member type icon */
+.order-user-icon-box {
+	position: absolute;
+	top: 85%;
+	right: 8%;
+	width: 40px;
+	height: 40px;
+	background: rgba(255, 255, 255, 0.9);
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Member details */
+.order-user-name {
+	margin-top: 20px;
+	font-size: 24px;
+	font-weight: 600;
+	color: #333;
+}
+
+.order-user-prof {
+	font-size: 16px;
+	color: #888;
+}
+
+/* Social icons */
+.user-media-box {
+	margin-top: 15px;
+	width: 70%;
+	display: flex;
+	justify-content: space-around;
+}
+
+.user-media-box svg {
+	color: #6b6bff;
+	cursor: pointer;
+	transition: color 0.3s ease;
+}
+
+.user-media-box svg:hover {
+	color: #483dff;
+	transform: scale(1.2);
+}
+
+/* Description */
+.user-desc {
+	margin-top: 20px;
+	text-align: center;
+	font-size: 14px;
+	color: #666;
+	padding: 0 10px;
+}
+
+/* SETTINGS SECTION */
+.menu-name {
+	text-align: center;
+	font-size: 36px;
+	font-weight: 700;
+	color: #222;
+	margin-bottom: 20px;
+}
+
+.settings {
+	width: 100%;
+	background: #fff;
+	padding: 20px;
+	border-radius: 16px;
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.settings .input-frame {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+}
+
+.settings .short-input,
+.settings .long-input {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.spec-label {
+	font-size: 14px;
+	color: #555;
+	margin-bottom: 6px;
+}
+
+.spec-input,
+.spec-textarea {
+	background: #f0f1f6;
+	border: none;
+	border-radius: 8px;
+	padding: 12px 16px;
+	font-size: 14px;
+	color: #333;
+	transition: background 0.3s ease;
+}
+
+.spec-input:focus,
+.spec-textarea:focus {
+	background: #e8eaf6;
+	outline: none;
+}
+
+.spec-textarea {
+	resize: vertical;
+	min-height: 100px;
+}
+
+/* Profile image area */
+.member-media-frame {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	margin-bottom: 20px;
+}
+
+.mb-image {
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	object-fit: cover;
+	border: 2px solid #6b6bff;
+}
+
+.media-change-box span {
+	font-weight: 600;
+	color: #222;
+}
+
+.media-change-box p {
+	color: #888;
+	font-size: 12px;
+	margin-top: 4px;
+	margin-bottom: 8px;
+}
+
+.up-del-box {
+	background: #e0e0e0;
+	border-radius: 8px;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	transition: background 0.3s ease;
+}
+
+.up-del-box:hover {
+	background: #6b6bff;
+}
+
+.up-del-box input {
+	display: none;
+}
+
+/* Save Button */
+.save-box {
+	margin-top: 25px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.save-box button {
+	background-color: #6b6bff;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 600;
+	text-transform: none;
+	padding: 10px 30px;
+	border-radius: 10px;
+	box-shadow: 0px 4px 14px rgba(107, 107, 255, 0.3);
+	transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.save-box button:hover {
+	background-color: #4f4fff;
+	transform: translateY(-2px);
+}
