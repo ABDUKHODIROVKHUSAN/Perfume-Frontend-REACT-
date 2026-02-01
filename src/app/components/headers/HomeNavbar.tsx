@@ -325,74 +325,167 @@ export function HomeNavbar(props: HomeNavbarProps) {
         </Container>
       </Box>
 
-      {/* ================= FEATURED ================= */}
-      <Container maxWidth="lg" sx={{ py: 10 }}>
-        <Typography
+  {/* ================= FEATURED ================= */}
+<Box
+  sx={{
+    py: 14,
+    background:
+      "linear-gradient(180deg, #faf7f2 0%, #f1ece3 100%)",
+  }}
+>
+  <Container maxWidth="lg">
+    {/* Title */}
+    <Stack alignItems="center" spacing={2} mb={10}>
+      <Typography
+        sx={{
+          fontFamily: "Playfair Display",
+          fontSize: { xs: 32, md: 40 },
+          letterSpacing: 1,
+          color: "#1a1a1a",
+        }}
+      >
+        Featured Fragrances
+      </Typography>
+
+      <Typography
+        sx={{
+          maxWidth: 520,
+          textAlign: "center",
+          color: "#6b6b6b",
+          fontSize: 16,
+        }}
+      >
+        Handpicked scents that define elegance, confidence, and
+        unforgettable presence.
+      </Typography>
+
+      <Box
+        sx={{
+          width: 90,
+          height: 3,
+          borderRadius: 2,
+          background:
+            "linear-gradient(90deg, #e3c08d, #b8945e)",
+        }}
+      />
+    </Stack>
+
+    {/* Cards */}
+    <Stack
+      direction="row"
+      justifyContent="center"
+      spacing={7}
+      flexWrap="wrap"
+    >
+      {featuredPerfumes.map((item) => (
+        <Box
+          key={item._id.toString()}
           sx={{
-            fontFamily: "Playfair Display",
-            fontSize: 36,
-            mb: 6,
-            textAlign: "center",
+            width: 280,
+            borderRadius: 6,
+            overflow: "hidden",
+            position: "relative",
+            background:
+              "linear-gradient(180deg, #ffffff 0%, #f7f4ef 100%)",
+            boxShadow: "0 25px 60px rgba(0,0,0,0.18)",
+            transition: "all 0.45s ease",
+            cursor: "pointer",
+            "&:hover": {
+              transform: "translateY(-14px)",
+              boxShadow: "0 40px 80px rgba(0,0,0,0.28)",
+            },
+            "&:hover .image": {
+              transform: "scale(1.12)",
+            },
+            "&:hover .overlay": {
+              opacity: 1,
+            },
           }}
         >
-          Featured Fragrances
-        </Typography>
-
-        <Stack direction="row" justifyContent="center" spacing={4} flexWrap="wrap">
-          {featuredPerfumes.map((item) => (
+          {/* Image */}
+          <Box sx={{ height: 230, overflow: "hidden" }}>
             <Box
-              key={item._id.toString()}
+              component="img"
+              src={`${serverApi}/${item.perfumeImages?.[0]}`}
+              alt={item.perfumeName}
+              className="image"
               sx={{
-                width: 260,
-                p: 2,
-                borderRadius: 4,
-                background:
-                  "linear-gradient(180deg, #ffffff, #f3f3f3)",
-                boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
-                textAlign: "center",
-                transition: "0.4s",
-                "&:hover": { transform: "translateY(-8px)" },
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                transition: "0.6s ease",
+              }}
+            />
+          </Box>
+
+          {/* Hover Overlay */}
+          <Box
+            className="overlay"
+            sx={{
+              position: "absolute",
+              inset: 0,
+              background:
+                "linear-gradient(180deg, rgba(236, 180, 58, 0) 30%, rgba(172, 139, 67, 0.7))",
+              opacity: 0,
+              transition: "0.4s ease",
+            }}
+          />
+
+          {/* Content */}
+          <Box sx={{ p: 3, textAlign: "center" }}>
+            <Typography
+              sx={{
+                fontFamily: "Playfair Display",
+                fontWeight: 700,
+                fontSize: 18,
+                mb: 0.5,
               }}
             >
-              <img
-                src={`${serverApi}/${item.perfumeImages?.[0]}`}
-                alt={item.perfumeName}
-                style={{
-                  width: "100%",
-                  height: 180,
-                  objectFit: "cover",
-                  borderRadius: 16,
-                }}
-              />
+              {item.perfumeName}
+            </Typography>
 
-              <Typography mt={2} fontWeight={600}>
-                {item.perfumeName}
-              </Typography>
-
-              <Typography color="text.secondary">
-                ${item.perfumePrice}
-              </Typography>
-            </Box>
-          ))}
-        </Stack>
-
-        <Box textAlign="center" mt={6}>
-          <Button
-            component={Link}
-            to="/perfumes"
-            sx={{
-              px: 6,
-              py: 1.5,
-              borderRadius: 50,
-              background: "#000",
-              color: "#e3c08d",
-              fontWeight: 600,
-            }}
-          >
-            View All
-          </Button>
+            <Typography
+              sx={{
+                fontWeight: 600,
+                fontSize: 16,
+                color: "#b8945e",
+              }}
+            >
+              ${item.perfumePrice}
+            </Typography>
+          </Box>
         </Box>
-      </Container>
-    </>
+      ))}
+    </Stack>
+
+    {/* Button */}
+    <Box textAlign="center" mt={12}>
+      <Button
+        component={Link}
+        to="/perfumes"
+        sx={{
+          px: 7,
+          py: 1.7,
+          borderRadius: 50,
+          fontWeight: 700,
+          letterSpacing: 1,
+          fontSize: 14,
+          color: "#000",
+          background:
+            "linear-gradient(135deg, #e3c08d, #b8945e)",
+          boxShadow: "0 15px 35px rgba(184,148,94,0.45)",
+          transition: "all 0.35s ease",
+          "&:hover": {
+            transform: "translateY(-3px)",
+            boxShadow: "0 25px 50px rgba(184,148,94,0.6)",
+          },
+        }}
+      >
+        View All Fragrances
+      </Button>
+    </Box>
+  </Container>
+</Box>
+</>
   );
 }

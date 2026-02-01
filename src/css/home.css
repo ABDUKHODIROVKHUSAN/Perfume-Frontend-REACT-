@@ -133,267 +133,107 @@
   .arrow {
     margin-left: 8px;
   }
-/* Best selling perfumes */
 
-.bsp-section {
-    text-align: center;
-    padding: 60px 40px;
-    background-color: #ffffff;
-    font-family: 'Helvetica Neue', sans-serif;
-  }
-  
-  .bsp-title {
-    font-size: 36px;
-    font-weight: bold;
-    margin-bottom: 40px;
-    color: #1c1c1c;
-  }
-  
-  .bsp-products {
-    display: flex;
-    justify-content: center;
-    gap: 60px;
-    flex-wrap: wrap;
-  }
-  
-  .bsp-card {
-    max-width: 280px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .bsp-img {
-    width: 220px;
-    height: 250px;
-    border-radius: 10%;
-    margin-bottom: 16px;
-  }
-  .bsp-img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  }
-  
-  .bsp-name {
-    font-size: 16px;
-    color: #1e1e1e;
-    margin: 4px 0;
-  }
-  
-  .bsp-price {
-    font-size: 18px;
-    font-weight: 600;
-    color: #2b2b2b;
-    margin-bottom: 6px;
-  }
-  
-  .bsp-stars {
-    color: #ff8c00;
-    font-size: 16px;
-    letter-spacing: 2px;
-  }
-  
-  .bsp-more {
-    margin-top: 40px;
-  }
-  
-  .bsp-more a {
-    font-weight: 500;
-    font-size: 16px;
-    color: #4c5c45;
-    text-decoration: none;
-    border-bottom: 1px solid #4c5c45;
-    padding-bottom: 2px;
-    transition: 0.3s;
-  }
-  
-  .bsp-more a:hover {
-    color: #2c2c2c;
-    border-color: #2c2c2c;
-  }
-  
-  .arrow {
-    margin-left: 8px;
-  }
+
 /* How It works Page */
-.hiw-section {
-    padding: 60px 20px;
-    text-align: center;
-    background-color: #fff;
-  }
-  
-  .hiw-title {
-    font-size: 36px;
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
-  
-  .hiw-subtitle {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 50px;
-  }
-  
-  .hiw-steps {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 40px;
-  }
-  
-  .hiw-card {
-    max-width: 300px;
-    text-align: center;
-  }
-  
-  .hiw-image-container {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  
-  .hiw-image {
-    width: 100%;
-    height: 320px;
-    display: block;
-    border-radius: 12px;
-    transition: transform 0.3s ease;
-  }
-  
-  .hiw-image-container:hover .hiw-image {
-    transform: scale(1.03);
-  }
-  
-  .hiw-number {
-    position: absolute;
-    bottom: -50px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #000;
-    color: #fff;
-    font-weight: 600;
-    border-radius: 50%;
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  }
-  
-  .hiw-card-title {
-    font-size: 18px;
-    font-weight: 600;
-    margin: 30px 0 10px;
-  }
-  
-  .hiw-description {
-    font-size: 14px;
-    color: #555;
-  }
+
 /* Client review section */
 .reviews-section {
-    padding: 60px 20px;
-    text-align: center;
-    background-color: #fdfdfd;
-  }
-  
-  .reviews-title {
-    font-size: 36px;
-    font-weight: 700;
-    margin-bottom: 60px;
-    color: #222;
-  }
-  
-  .reviews-container {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-  }
-  
-  .review-card {
-    width: 320px;
-    background-color: white;
-    border-radius: 28px;
-    overflow: hidden;
-    box-shadow: 0 0 15px rgba(0,0,0,0.05);
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .room-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
-  
-  .review-content {
-    padding: 16px 20px;
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-  }
-  
-  .avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  .review-text {
-    text-align: left;
-  }
-  
-  .review-text h4 {
-    margin: 0;
-    font-size: 16px;
-    font-weight: 700;
-    color: #222;
-  }
-  
-  .stars {
-    color: #ffa500;
-    font-size: 14px;
-    margin: 4px 0;
-  }
-  
-  .review-text p {
-    font-size: 14px;
-    color: #555;
-    margin: 0;
-  }
-  
-  .show-more {
-    margin-top: 40px;
-    font-size: 16px;
-    color: #2f4f2f;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .show-more .arrow {
-    transition: transform 0.3s ease;
-  }
-  
-  .show-more:hover .arrow {
-    transform: translateX(5px);
-  }
-  
-  @media (max-width: 768px) {
-    .reviews-container {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .review-card {
-      width: 90%;
-    }
-  }
-  /* coming soon  Page */
+  padding: 80px 20px;
+  background: linear-gradient(180deg, #fafafa, #ffffff);
+  text-align: center;
+}
+
+.reviews-title {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.reviews-subtitle {
+  color: #777;
+  margin-bottom: 60px;
+}
+
+.reviews-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.review-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(14px);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+}
+
+.room-image {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+
+.review-content {
+  padding: 24px;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin-top: -50px;
+  border: 4px solid #fff;
+  object-fit: cover;
+}
+
+.review-content h4 {
+  margin-top: 12px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.stars {
+  margin: 6px 0;
+  font-size: 18px;
+  color: #e6c56f;
+}
+
+.stars span {
+  color: #ccc;
+}
+
+.review-comment {
+  font-size: 14px;
+  color: #555;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+.show-more {
+  margin-top: 60px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #000;
+  text-decoration: none;
+  transition: gap 0.3s ease;
+}
+
+.show-more span {
+  transition: transform 0.3s ease;
+}
+
+.show-more:hover span {
+  transform: translateX(6px);
+}

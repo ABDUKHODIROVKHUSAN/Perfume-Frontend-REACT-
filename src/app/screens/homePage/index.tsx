@@ -7,12 +7,10 @@ import { Dispatch } from "@reduxjs/toolkit";
 
 import { Perfume } from "../../../lib/types/perfume";
 import PerfumeService from "../../services/ProductService";
-import PopularPerfumes from "./popularPerfume";
-import HowItWorks from "./howItWorks";
+import PopularPerfumes from "./PerfumeAds";
 import Statistics from "./statistics";
-import Rooms from "./rooms";
+import Rooms from "./perfumes";
 import ClientReview from "./clientReview";
-import ComingSoon from "./comingSoon";
 
 const actionDispatch = (dispatch: Dispatch) => ({
   setPopularPerfumes: (data: Perfume[]) => dispatch(setPopularPerfumes(data)),
@@ -55,9 +53,7 @@ export default function HomePage() {
       <Statistics />
       <Rooms />
       <PopularPerfumes />
-      <HowItWorks />
       <ClientReview />
-      <ComingSoon />
     </div>
   );
 }
