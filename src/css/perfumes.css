@@ -1,316 +1,183 @@
-.perfume-list-container {
-  padding: 40px 20px;
+/* ===============================
+   ROOT
+================================ */
+.gold-soft-perfumes {
+  background: linear-gradient(180deg, #f6f0df, #efe4c6);
+  padding: 90px 28px 120px;
+}
+
+/* ===============================
+   HEADER
+================================ */
+.gold-soft-header {
   text-align: center;
-  background-color: #f8f9fa;
+  margin-bottom: 70px;
 }
 
-.section-title {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 30px;
+.gold-soft-header span {
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #b89b5e;
 }
 
-.category-menu {
+.gold-soft-header h2 {
+  margin-top: 14px;
+  font-family: "Playfair Display", serif;
+  font-size: 50px;
+  font-weight: 500;
+  color: #3a2e12;
+}
+
+/* ===============================
+   TABS
+================================ */
+.gold-soft-tabs {
   display: flex;
   justify-content: center;
   gap: 30px;
-  margin-bottom: 40px;
+  margin-bottom: 80px;
   flex-wrap: wrap;
 }
 
-.category-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  opacity: 0.8;
-}
-
-.category-item img {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  border-radius: 80%;
-}
-
-.category-item span {
-  margin-top: 8px;
-  font-weight: 500;
-  font-size: 14px;
-  color: #333;
-}
-
-.category-item:hover,
-.category-item.active {
-  opacity: 1;
-  transform: scale(1.3);
-}
-
-.perfume-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 25px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.perfume-card {
-  background-color: #fff;
-  border-radius: 16px;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 330px; /* Equal height for all cards */
-}
-
-.perfume-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
-}
-
-.card-img-wrapper {
-  position: relative;
-  overflow: hidden;
-  border-radius: 12px;
-  cursor: pointer;
-}
-
-.perfume-image {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-  border-radius: 12px;
-}
-
-.card-img-wrapper:hover .perfume-image {
-  transform: scale(1.05);
-}
-
-.stock-overlay {
-  position: absolute;
-  bottom: 8px;
-  left: 8px;
-  background-color: rgba(76, 175, 80, 0.85);
-  color: white;
-  padding: 4px 10px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 12px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.card-img-wrapper:hover .stock-overlay {
-  opacity: 1;
-}
-
-.perfume-card h3 {
-  font-size: 18px;
-  font-weight: 600;
-  margin: 12px 0 6px;
-  min-height: 48px; /* Reserve space even for short titles */
-}
-
-.perfume-card .price {
-  font-weight: 600;
-  font-size: 16px;
-  color: #333;
-  margin-bottom: 12px;
-  min-height: 24px;
-}
-
-.perfume-card button {
-  margin-top: auto;
-  background-color: #ffa500;
-  color: #fff;
+.gold-soft-tab {
+  background: transparent;
   border: none;
-  padding: 8px 16px;
-  font-weight: 500;
-  border-radius: 6px;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8d7745;
   cursor: pointer;
-  display: inline-flex;
+  position: relative;
+  padding-bottom: 6px;
+}
+
+.gold-soft-tab::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background: #b89b5e;
+  transform: translateX(-50%);
+  transition: width 0.35s ease;
+}
+
+.gold-soft-tab:hover,
+.gold-soft-tab.active {
+  color: #3a2e12;
+}
+
+.gold-soft-tab.active::after {
+  width: 100%;
+}
+
+/* ===============================
+   GRID
+================================ */
+.gold-soft-grid {
+  max-width: 1350px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 70px 48px;
+}
+
+/* ===============================
+   CARD
+================================ */
+.gold-soft-card {
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+
+.gold-soft-card:hover {
+  transform: translateY(-6px);
+}
+
+/* ===============================
+   IMAGE
+================================ */
+.gold-soft-image {
+  height: 340px;
+  background: linear-gradient(180deg, #f3e7c9, #e9d9b0);
+  border-radius: 22px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.3s ease;
-  min-height: 36px;
 }
 
-
-.perfume-card button:hover {
-  background-color: #ff8c00;
+.gold-soft-image img {
+  max-height: 280px;
+  object-fit: contain;
+  transition: transform 0.5s ease;
 }
 
-.pagination-section {
+.gold-soft-card:hover img {
+  transform: scale(1.07);
+}
+
+/* ===============================
+   INFO
+================================ */
+.gold-soft-info {
+  text-align: center;
+  padding-top: 22px;
+}
+
+.gold-soft-info h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: #3a2e12;
+  margin-bottom: 6px;
+}
+
+.gold-soft-info p {
+  color: #9b8451;
+  font-size: 15px;
+  margin-bottom: 18px;
+}
+
+/* ===============================
+   ADD BUTTON
+================================ */
+.gold-soft-add {
+  background: none;
+  border: none;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #3a2e12;
+  display: inline-flex;
   align-items: center;
-  margin-top: 30px;
-  margin-bottom: 20px;
-}
-
-/* Chosen Product */
-.product-detail-container {
-  padding: 50px;
-  font-family: "Helvetica Neue", sans-serif;
-  background-color: #f8fafc;
-  color: #111827;
-  height: auto;
-  width: 1300px;
-}
-
-.title {
-  text-align: center;
-  letter-spacing: 3px;
-  margin-bottom: 40px;
-}
-
-.product-main {
-  display: flex;
-  justify-content: space-between;
-  gap: 50px;
-  flex-wrap: wrap;
-}
-
-.product-image {
-  flex: 1;
-}
-
-.main-img {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.thumbnails {
-  margin-top: 15px;
-  display: flex;
-  gap: 10px;
-}
-
-.thumbnail {
-  width: 60px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 6px;
+  gap: 8px;
   cursor: pointer;
-  opacity: 0.7;
-  border: 2px solid transparent;
-  transition: all 0.2s ease;
-}
-
-.thumbnail.active,
-.thumbnail:hover {
-  opacity: 1;
-  border-color: #52c723;
-}
-
-.product-info {
-  flex: 1;
-  max-width: 500px;
-}
-
-.collection {
-  font-weight: bold;
-  color: #52c723;
-  margin-top: 20px;
-  letter-spacing: 1px;
-}
-
-.category,
-.views {
-  font-size: 14px;
-  margin-top: 5px;
-  color: #6b7280;
-}
-
-.desc-title {
-  margin-top: 30px;
-  color: #52c723;
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 1px;
-}
-
-.desc {
-  margin-top: 10px;
-  line-height: 1.6;
-}
-
-.price {
-  font-size: 24px;
-  margin-top: 20px;
-  font-weight: bold;
-}
-
-.add-btn {
-  margin-top: 10px;
-  padding: 10px 25px;
-  border: 2px solid #52c723;
-  background: transparent;
-  color: #52c723;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-}
-
-.add-btn:hover {
-  background-color: #52c723;
-  color: white;
-}
-
-.related-section {
-  margin-top: 60px;
-}
-
-.related-section h2 {
-  text-align: center;
-  letter-spacing: 2px;
-  margin-bottom: 30px;
-}
-
-.related-card {
-  max-width: 250px;
-  margin: auto;
   position: relative;
-  text-align: center;
 }
 
-.badge {
+.gold-soft-add::after {
+  content: "";
   position: absolute;
-  top: 10px;
-  left: 10px;
-  background: #2ba809;
-  color: white;
-  font-size: 12px;
-  padding: 2px 8px;
-  border-radius: 4px;
-}
-
-.related-img {
+  bottom: -5px;
+  left: 0;
   width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  height: 1px;
+  background: #b89b5e;
+  transform: scaleX(0);
+  transition: transform 0.35s ease;
 }
 
-.related-name {
-  margin-top: 10px;
-  font-weight: 600;
+.gold-soft-add:hover::after {
+  transform: scaleX(1);
 }
 
-.related-price {
-  color: #52c723;
-}
-
-.pagination-section{
-  align-items: center;
-  margin-top: 30px;
-  margin-bottom: 20px;
+/* ===============================
+   PAGINATION
+================================ */
+.gold-soft-pagination {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
 }

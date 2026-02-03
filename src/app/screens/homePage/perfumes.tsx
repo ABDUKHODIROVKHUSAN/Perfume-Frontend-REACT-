@@ -48,7 +48,7 @@ const RoomsSection: React.FC = () => {
       sx={{
         py: 18,
         background:
-          "linear-gradient(180deg, #faf7f2 0%, #f1ece3 100%)",
+          "linear-gradient(180deg, #f7f0e4 0%, #f1ece3 100%)",
       }}
     >
       <Container maxWidth="lg">

@@ -356,13 +356,23 @@
     width: 100%;
     height: 230px;
     display: flex;
-    background: url('/public/img/bannerOther.jpg');
+    background:
+        linear-gradient(
+            180deg,
+            rgba(10, 10, 10, 0.65),
+            rgba(10, 10, 10, 0.9)
+        ),
+        url('/public/img/bannerOther.jpg');
     background-size: cover;
+    background-position: center;
+    box-shadow: inset 0 -80px 120px rgba(0, 0, 0, 0.65);
 }
 
 .other-navbar .navbar-container {
     margin-top: 55px;
 }
+
+/* ================= MENU ================= */
 
 .other-navbar .navbar-container .menu {
     height: 50px;
@@ -372,14 +382,21 @@
     align-items: center;
 }
 
+/* ================= BRAND ================= */
+
 .other-navbar .navbar-container .menu .brand-name {
-    color: var(--Neutral-Soft-Grey, #F1F1F1);
-    font-family: 'Syne', sans-serif;
-    font-size: 2rem;
+    font-family: "Playfair Display", serif;
+    font-size: 2.3rem;
     font-weight: 700;
-    line-height: 1;
+    letter-spacing: 3px;
+    background: linear-gradient(135deg, #e3c08d, #b8945e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     white-space: nowrap;
+    text-shadow: 0 8px 30px rgba(184, 148, 94, 0.35);
 }
+
+/* ================= LINKS ================= */
 
 .other-navbar .navbar-container .menu .links {
     min-width: 700px;
@@ -389,47 +406,83 @@
     align-items: center;
 }
 
-.other-navbar .navbar-container .menu .links .login-button {
-    background: #3776CC;
-    color: #f8f8ff;
-}
-
-.other-navbar .navbar-container .menu .user-avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 24px;
-}
-
+/* Base link style */
 .other-navbar a {
     text-decoration: none;
 }
 
+/* Link text */
 .other-navbar .hover-line a {
-    color: #f8f8ff;
-    z-index: 100;
+    color: #f1f1f1;
+    font-weight: 500;
+    letter-spacing: 1px;
+    position: relative;
+    transition: color 0.3s ease;
+    z-index: 2;
 }
 
+/* Active underline */
 .other-navbar .underline {
     display: block;
     content: "";
     border-bottom: solid 2px #d7b686;
 }
 
+/* Hover underline animation */
 .other-navbar .hover-line:after {
     display: block;
     content: "";
     border-bottom: solid 2px #d7b686;
     transform: scaleX(0);
-    transition: transform 250ms ease-in-out;
+    transform-origin: 0% 50%;
+    transition: transform 300ms ease;
 }
 
 .other-navbar .hover-line:hover:after {
     transform: scaleX(1);
 }
 
-.other-navbar div.hover-line:after {
-    transform-origin: 0% 50%;
+/* Hover color */
+.other-navbar .hover-line:hover a {
+    color: #e3c08d;
 }
+
+/* ================= LOGIN BUTTON ================= */
+
+.other-navbar .navbar-container .menu .links .login-button {
+    background: linear-gradient(135deg, #e3c08d, #b8945e);
+    color: #000;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 30px;
+    padding: 8px 26px;
+    box-shadow: 0 12px 30px rgba(184, 148, 94, 0.45);
+    transition: all 0.35s ease;
+}
+
+.other-navbar .navbar-container .menu .links .login-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 45px rgba(184, 148, 94, 0.65);
+}
+
+/* ================= USER AVATAR ================= */
+
+.other-navbar .navbar-container .menu .user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid #b8945e;
+    transition: all 0.35s ease;
+    box-shadow: 0 8px 25px rgba(184, 148, 94, 0.35);
+}
+
+.other-navbar .navbar-container .menu .user-avatar:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 0 6px rgba(184, 148, 94, 0.25);
+}
+
 
 
   /* BASKET */

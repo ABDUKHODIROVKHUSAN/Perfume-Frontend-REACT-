@@ -58,6 +58,7 @@ export function HomeNavbar(props: HomeNavbarProps) {
   const [featuredPerfumes, setFeaturedPerfumes] = useState<Perfume[]>([]);
 
   useEffect(() => {
+    
     const fetchPerfumes = async () => {
       try {
         const res = await axios.get(`${serverApi}/perfume/random`);
@@ -76,7 +77,8 @@ export function HomeNavbar(props: HomeNavbarProps) {
   position="sticky"
   elevation={0}
   sx={{
-    background: "linear-gradient(180deg, rgba(31, 29, 29, 0.85), rgba(0,0,0,0.65))",
+     background:
+          "linear-gradient(180deg, rgba(20,20,20,0.92), rgba(10,10,10,0.92))",
     backdropFilter: "blur(14px)",
     borderBottom: "1px solid rgba(227,192,141,0.15)",
   }}
@@ -330,7 +332,7 @@ export function HomeNavbar(props: HomeNavbarProps) {
   sx={{
     py: 14,
     background:
-      "linear-gradient(180deg, #faf7f2 0%, #f1ece3 100%)",
+      "linear-gradient(180deg, #f7f0e4 0%, #f1ece3 100%)",
   }}
 >
   <Container maxWidth="lg">
@@ -369,6 +371,7 @@ export function HomeNavbar(props: HomeNavbarProps) {
         }}
       />
     </Stack>
+    
 
     {/* Cards */}
     <Stack

@@ -18,7 +18,7 @@ const reviews = [
   {
     name: "Elena Belova",
     image: "img/widow.jpg",
-    stars: 4,
+    stars: 5,
     comment: "What I love most is how it lingers and evolves. It starts off bright and punchy, but hours later, it settles into this intimate, creamy scent that stays close to my skin.",
     roomImage: "https://images.pexels.com/photos/271743/pexels-photo-271743.jpeg",
   },

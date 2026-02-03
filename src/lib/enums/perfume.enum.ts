@@ -16,9 +16,9 @@ export enum PerfumeStatus {
   DELETE = "DELETE",
 }
 export enum PerfumeCollection {
-  EauDeCologne = "Eau de Cologne",
-  EauDeToilette = "Eau de Toilette",
-  EauDeParfum = "Eau de Parfum",
-  Aroma = "Aroma",
-  Parfume = "Perfume",
+DIOR,
+GUCCI,
+ARMANI,
+CHANEL,
+HUGO_BOSS,
 }

@@ -140,7 +140,7 @@
 /* Client review section */
 .reviews-section {
   padding: 80px 20px;
-  background: linear-gradient(180deg, #fafafa, #ffffff);
+  background: linear-gradient(180deg, #f7f0e4, #faf3ed);
   text-align: center;
 }
 
@@ -237,3 +237,4 @@
 .show-more:hover span {
   transform: translateX(6px);
 }
+  
