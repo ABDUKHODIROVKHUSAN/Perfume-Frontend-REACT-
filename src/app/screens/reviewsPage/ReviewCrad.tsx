@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   Card,
   CardHeader,
@@ -10,12 +10,11 @@ import {
   Typography,
   Box,
   Tooltip,
-} from '@mui/material';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
-import BookmarkIcon from '@mui/icons-material/Bookmark';
-import ShareIcon from '@mui/icons-material/Share';
-import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
+} from "@mui/material";
+import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+import ShareIcon from "@mui/icons-material/Share";
+import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
 
 type ReviewCardProps = {
   productName: string;
@@ -36,74 +35,121 @@ export default function ReviewCard({
 }: ReviewCardProps) {
   const [liked, setLiked] = React.useState(false);
   const [bookmarked, setBookmarked] = React.useState(false);
-  const [emoji, setEmoji] = React.useState('😍');
+  const [emoji, setEmoji] = React.useState("😍");
 
-  const toggleLike = () => setLiked(!liked);
-  const toggleBookmark = () => setBookmarked(!bookmarked);
-
-  const renderStars = (count: number) => {
-    return (
-      <Box sx={{ display: 'flex', mb: 1 }}>
-        {[...Array(5)].map((_, i) => (
-          <span key={i} style={{ fontSize: '18px', color: i < count ? '#FFD700' : '#ccc' }}>
-            ★
-          </span>
-        ))}
-      </Box>
-    );
-  };
+  const renderStars = (count: number) => (
+    <Box sx={{ display: "flex", mb: 1 }}>
+      {[...Array(5)].map((_, i) => (
+        <Box
+          key={i}
+          component="span"
+          sx={{
+            fontSize: 18,
+            color: i < count ? "#b89b5e" : "#d8caa2",
+          }}
+        >
+          ★
+        </Box>
+      ))}
+    </Box>
+  );
 
   return (
-    <Card sx={{ maxWidth: 345, borderRadius: 2, boxShadow: 3 }}>
+    <Card
+      sx={{
+        borderRadius: 3,
+        background: "linear-gradient(180deg, #f3e7c9, #e9d9b0)",
+        boxShadow: "0 20px 45px rgba(184,155,94,0.35)",
+        transition: "transform 0.45s ease",
+        "&:hover": {
+          transform: "translateY(-10px)",
+        },
+      }}
+    >
       <CardHeader
         avatar={
           <Avatar
-            src={customerProfilePic || '/icons/img/auth.jpeg'}
-            sx={{ border: '2px solid #eee' }}
+            src={customerProfilePic || "/icons/img/auth.jpeg"}
+            sx={{
+              border: "2px solid #b89b5e",
+              bgcolor: "#f6f0df",
+            }}
           />
         }
         title={
-          <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+          <Typography
+            sx={{
+              fontWeight: 600,
+              color: "#3a2e12",
+            }}
+          >
             {customerName}
           </Typography>
         }
-        subheader={productName}
+        subheader={
+          <Typography
+            sx={{
+              fontSize: 13,
+              letterSpacing: 1,
+              color: "#8d7745",
+            }}
+          >
+            {productName}
+          </Typography>
+        }
       />
 
-      <CardMedia component="img" height="200" image={productImage} alt={productName} />
+      <CardMedia
+        component="img"
+        height="210"
+        image={productImage}
+        alt={productName}
+        sx={{
+          objectFit: "cover",
+          borderRadius: "0 0 18px 18px",
+        }}
+      />
 
       <CardContent>
         {renderStars(rating)}
-        <Typography variant="body2" color="text.secondary">
+        <Typography
+          sx={{
+            fontSize: 14,
+            color: "#5c4a25",
+            lineHeight: 1.7,
+          }}
+        >
           {description}
         </Typography>
       </CardContent>
 
-      <CardActions disableSpacing sx={{ justifyContent: 'space-between' }}>
+      <CardActions sx={{ justifyContent: "space-between" }}>
         <Box>
-          <Tooltip title="React with emoji">
-            <IconButton onClick={() => setEmoji(emoji === '😍' ? '😎' : '😍')}>
-              <EmojiEmotionsIcon />
-              <span style={{ fontSize: '16px', marginLeft: 4 }}>{emoji}</span>
+          <Tooltip title="React">
+            <IconButton onClick={() => setEmoji(emoji === "😍" ? "😎" : "😍")}>
+              <EmojiEmotionsIcon sx={{ color: "#b89b5e" }} />
+              <Box component="span" sx={{ ml: 0.5 }}>
+                {emoji}
+              </Box>
             </IconButton>
           </Tooltip>
 
           <Tooltip title="Like">
-            <IconButton onClick={toggleLike}>
-              <ThumbUpAltIcon sx={{ color: liked ? 'green' : 'gray' }} />
+            <IconButton onClick={() => setLiked(!liked)}>
+              <ThumbUpAltIcon sx={{ color: liked ? "#3a2e12" : "#9b8451" }} />
             </IconButton>
           </Tooltip>
 
           <Tooltip title="Bookmark">
-            <IconButton onClick={toggleBookmark}>
-              <BookmarkIcon sx={{ color: bookmarked ? 'orange' : 'gray' }} />
+            <IconButton onClick={() => setBookmarked(!bookmarked)}>
+              <BookmarkIcon sx={{ color: bookmarked ? "#3a2e12" : "#9b8451" }} />
             </IconButton>
           </Tooltip>
         </Box>
 
-        <Tooltip title="Share this review">
+        <Tooltip title="Share">
           <IconButton>
-            <ShareIcon />
+            <ShareIcon sx={{ color: "#9b8451" }} />
           </IconButton>
         </Tooltip>
       </CardActions>

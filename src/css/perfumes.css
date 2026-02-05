@@ -2,7 +2,7 @@
    ROOT
 ================================ */
 .gold-soft-perfumes {
-  background: linear-gradient(180deg, #f6f0df, #efe4c6);
+  background: linear-gradient(180deg, #f7f0e4, #f1ece3);
   padding: 90px 28px 120px;
 }
 
@@ -74,48 +74,68 @@
 }
 
 /* ===============================
-   GRID
+   GRID (CENTERED FIX)
 ================================ */
 .gold-soft-grid {
-  max-width: 1350px;
+  max-width: 1300px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  gap: 70px 48px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  justify-items: center;
+  gap: 80px 50px;
 }
 
 /* ===============================
-   CARD
+   CARD (ANIMATION)
 ================================ */
 .gold-soft-card {
+  width: 100%;
+  max-width: 300px;
   cursor: pointer;
-  transition: transform 0.4s ease;
+  animation: fadeUp 0.8s ease forwards;
+  opacity: 0;
+  transition: transform 0.45s ease;
 }
 
 .gold-soft-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-10px);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ===============================
-   IMAGE
+   IMAGE BOX (NO DISTORTION)
 ================================ */
 .gold-soft-image {
   height: 340px;
   background: linear-gradient(180deg, #f3e7c9, #e9d9b0);
-  border-radius: 22px;
+  border-radius: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(184, 155, 94, 0.25);
 }
 
 .gold-soft-image img {
-  max-height: 280px;
-  object-fit: contain;
-  transition: transform 0.5s ease;
+  width: 95%;
+  height: 95%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
 }
 
+
 .gold-soft-card:hover img {
-  transform: scale(1.07);
+  transform: scale(1.12) translateY(-6px);
 }
 
 /* ===============================
@@ -123,7 +143,7 @@
 ================================ */
 .gold-soft-info {
   text-align: center;
-  padding-top: 22px;
+  padding-top: 24px;
 }
 
 .gold-soft-info h3 {
@@ -177,7 +197,144 @@
    PAGINATION
 ================================ */
 .gold-soft-pagination {
-  margin-top: 100px;
+  margin-top: 110px;
   display: flex;
   justify-content: center;
+}
+
+
+/* CHOSEN PRODUCT/
+
+/* ===============================
+   DETAIL LAYOUT
+================================ */
+.gold-detail {
+  padding-top: 70px;
+}
+
+.gold-detail-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 90px;
+  align-items: center;
+}
+
+/* ===============================
+   IMAGES
+================================ */
+.gold-detail-images {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.gold-detail-main-img {
+  height: 460px;
+  border-radius: 28px;
+  background: linear-gradient(180deg, #f3e7c9, #e9d9b0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 25px 55px rgba(184, 155, 94, 0.35);
+}
+
+.gold-detail-main-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.gold-detail-main-img:hover img {
+  transform: scale(1.08);
+}
+
+/* ===============================
+   THUMBNAILS
+================================ */
+.gold-detail-thumbs {
+  display: flex;
+  gap: 18px;
+}
+
+.gold-detail-thumb {
+  width: 90px;
+  height: 90px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #f3e7c9, #e9d9b0);
+  cursor: pointer;
+  overflow: hidden;
+  opacity: 0.6;
+  transition: all 0.35s ease;
+}
+
+.gold-detail-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gold-detail-thumb:hover,
+.gold-detail-thumb.active {
+  opacity: 1;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(184, 155, 94, 0.35);
+}
+
+/* ===============================
+   INFO
+================================ */
+.gold-detail-info {
+  animation: fadeUp 0.9s ease forwards;
+}
+
+.gold-detail-collection {
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #b89b5e;
+  margin-bottom: 10px;
+}
+
+.gold-detail-info h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 34px;
+  font-weight: 500;
+  color: #3a2e12;
+  margin-bottom: 18px;
+}
+
+.gold-detail-views {
+  color: #9b8451;
+  font-size: 14px;
+  margin-bottom: 26px;
+}
+
+.gold-detail-desc-title {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #b89b5e;
+  margin-bottom: 8px;
+}
+
+.gold-detail-desc {
+  color: #5c4a25;
+  font-size: 15px;
+  line-height: 1.9;
+  margin-bottom: 36px;
+}
+
+.gold-detail-price {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  color: #3a2e12;
+  margin-bottom: 30px;
+}
+
+.gold-detail-add {
+  font-size: 14px;
 }

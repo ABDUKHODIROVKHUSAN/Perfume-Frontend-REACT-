@@ -13,14 +13,15 @@ import { serverApi } from "../../../lib/config";
 
 type CollectionFilter = "ALL" | PerfumeCollection;
 
-const COLLECTIONS: { label: string; value: CollectionFilter }[] = [
+const COLLECTIONS = [
   { label: "All", value: "ALL" },
   { label: "Dior", value: PerfumeCollection.DIOR },
   { label: "Chanel", value: PerfumeCollection.CHANEL },
   { label: "Gucci", value: PerfumeCollection.GUCCI },
   { label: "Armani", value: PerfumeCollection.ARMANI },
   { label: "Hugo Boss", value: PerfumeCollection.HUGO_BOSS },
-];
+] as const;
+;
 
 interface Props {
   onAdd: (item: CartItem) => void;
@@ -28,7 +29,6 @@ interface Props {
 
 const Perfumes: React.FC<Props> = ({ onAdd }) => {
   const history = useHistory();
-
   const [data, setData] = useState<Perfume[]>([]);
   const [page, setPage] = useState(1);
   const [filter, setFilter] = useState<CollectionFilter>("ALL");
@@ -71,9 +71,7 @@ const Perfumes: React.FC<Props> = ({ onAdd }) => {
         {COLLECTIONS.map((c) => (
           <button
             key={c.value}
-            className={`gold-soft-tab ${
-              filter === c.value ? "active" : ""
-            }`}
+            className={`gold-soft-tab ${filter === c.value ? "active" : ""}`}
             onClick={() => {
               setFilter(c.value);
               setPage(1);
@@ -85,10 +83,11 @@ const Perfumes: React.FC<Props> = ({ onAdd }) => {
       </div>
 
       <div className="gold-soft-grid">
-        {visible.map((p) => (
+        {visible.map((p, i) => (
           <article
             key={p._id}
             className="gold-soft-card"
+            style={{ animationDelay: `${i * 80}ms` }}
             onClick={() => history.push(`/perfumes/${p._id}`)}
           >
             <div className="gold-soft-image">
@@ -116,7 +115,7 @@ const Perfumes: React.FC<Props> = ({ onAdd }) => {
                 }}
               >
                 <LocalMallOutlinedIcon fontSize="small" />
-                Add to bag
+                Add to cArd
               </button>
             </div>
           </article>

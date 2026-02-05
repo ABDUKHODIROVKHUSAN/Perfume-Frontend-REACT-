@@ -59,51 +59,66 @@ export default function ChosenPerfume(props: ChosenProductProps) {
   if (!perfume) return <div>Loading perfume details...</div>;
 
   return (
-    <div className="product-detail-container">
-      <h1 className="title">PERFUME DETAIL</h1>
-      <div className="product-main">
-        <div className="product-image">
-          <img src={selectedImg} alt="Main" className="main-img" />
-          <div className="thumbnails">
-            {perfume.perfumeImages.map((img, index) => (
-              <img
-                key={index}
-                src={`${serverApi}/${img}`}
-                alt={`thumb-${index}`}
-                className={`thumbnail ${selectedImg === `${serverApi}/${img}` ? "active" : ""}`}
-                onClick={() => setSelectedImg(`${serverApi}/${img}`)}
-              />
-            ))}
-          </div>
+  <section className="gold-soft-perfumes gold-detail">
+    <header className="gold-soft-header">
+      <span>Maison de Parfum</span>
+      <h2>{perfume.perfumeName}</h2>
+    </header>
+
+    <div className="gold-detail-main">
+      <div className="gold-detail-images">
+        <div className="gold-detail-main-img">
+          <img src={selectedImg} alt={perfume.perfumeName} />
         </div>
 
-        <div className="product-info">
-          <h2>{perfume.perfumeName}</h2>
-          <p className="collection">PERFUME COLLECTION</p>
-          <p className="category">{perfume.perfumeCollection}</p>
-          <p className="views">👁️ {perfume.perfumeViews} views</p>
-          <p className="desc-title">PERFUME DESCRIPTION</p>
-          <p className="desc">{perfume.perfumeDesc}</p>
-          <p className="price">${perfume.perfumePrice.toLocaleString()}</p>
-          <button
-            className="add-btn"
-            onClick={(e) => {
-              onAdd({
-                _id: perfume._id,
-                quantity: 1,
-                name: perfume.perfumeName,
-                price: perfume.perfumePrice,
-                image: perfume.perfumeImages?.[0] ?? "", // safer here
-              });
-              e.stopPropagation();
-            }}
-          >
-            ADD TO BASKET
-          </button>
-
-
+        <div className="gold-detail-thumbs">
+          {perfume.perfumeImages.map((img, index) => {
+            const src = `${serverApi}/${img}`;
+            return (
+              <div
+                key={index}
+                className={`gold-detail-thumb ${
+                  selectedImg === src ? "active" : ""
+                }`}
+                onClick={() => setSelectedImg(src)}
+              >
+                <img src={src} alt={`thumb-${index}`} />
+              </div>
+            );
+          })}
         </div>
       </div>
+
+      <div className="gold-detail-info">
+        <p className="gold-detail-collection">Perfume Collection</p>
+        <h3>{perfume.perfumeCollection}</h3>
+
+        <p className="gold-detail-views">👁 {perfume.perfumeViews} views</p>
+
+        <p className="gold-detail-desc-title">Description</p>
+        <p className="gold-detail-desc">{perfume.perfumeDesc}</p>
+
+        <p className="gold-detail-price">
+          ${perfume.perfumePrice.toLocaleString()}
+        </p>
+
+        <button
+          className="gold-soft-add gold-detail-add"
+          onClick={(e) => {
+            e.stopPropagation();
+            onAdd({
+              _id: perfume._id,
+              quantity: 1,
+              name: perfume.perfumeName,
+              price: perfume.perfumePrice,
+              image: perfume.perfumeImages?.[0] ?? "",
+            });
+          }}
+        >
+          ADD TO card
+        </button>
+      </div>
     </div>
-  );
+  </section>
+);
 }
