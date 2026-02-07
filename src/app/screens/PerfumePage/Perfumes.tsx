@@ -90,6 +90,7 @@ const Perfumes: React.FC<Props> = ({ onAdd }) => {
             style={{ animationDelay: `${i * 80}ms` }}
             onClick={() => history.push(`/perfumes/${p._id}`)}
           >
+            
             <div className="gold-soft-image">
               <img
                 src={`${serverApi}/${p.perfumeImages[0]}`}

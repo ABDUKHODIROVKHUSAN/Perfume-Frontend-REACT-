@@ -58,7 +58,7 @@ export default function ReviewCard({
     <Card
       sx={{
         borderRadius: 3,
-        background: "linear-gradient(180deg, #f3e7c9, #e9d9b0)",
+        background: "linear-gradient(180deg, #f7f0e4, #e9d9b0)",
         boxShadow: "0 20px 45px rgba(184,155,94,0.35)",
         transition: "transform 0.45s ease",
         "&:hover": {
@@ -69,7 +69,7 @@ export default function ReviewCard({
       <CardHeader
         avatar={
           <Avatar
-            src={customerProfilePic || "/icons/img/auth.jpeg"}
+            src={customerProfilePic || "/icons/img/Gucci.png"}
             sx={{
               border: "2px solid #b89b5e",
               bgcolor: "#f6f0df",
