@@ -12,3 +12,4 @@ yarn
 yarn run build
 
 pm2 start "yarn run start:prod" --name=AURO-REACT
+    
