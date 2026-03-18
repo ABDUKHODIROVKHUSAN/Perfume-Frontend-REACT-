@@ -36,49 +36,93 @@ export default function ReviewsPage() {
   return (
     <Box
       sx={{
-        background: "linear-gradient(180deg, #f6f0df, #efe4c6)",
-        padding: "90px 28px 120px",
+        background: "linear-gradient(180deg, #faf4ee, #f6eee7)",
+        padding: "86px 24px 110px",
       }}
     >
       <Box
         sx={{
-          textAlign: "center",
-          mb: 8,
+          maxWidth: 1240,
+          mx: "auto",
+          display: "grid",
+          gridTemplateColumns: { xs: "1fr", lg: "1.2fr 0.8fr" },
+          gap: 3,
+          mb: 7,
         }}
       >
         <Box
-          component="span"
           sx={{
-            fontSize: 12,
-            letterSpacing: 3,
-            textTransform: "uppercase",
-            color: "#b89b5e",
+            borderRadius: 4,
+            border: "1px solid rgba(122,71,52,0.2)",
+            background: "linear-gradient(180deg, #fffaf4, #f6e9dd)",
+            p: { xs: 3, md: 4 },
           }}
         >
-          Client Stories
+          <Box
+            component="span"
+            sx={{
+              fontSize: 12,
+              letterSpacing: 3,
+              textTransform: "uppercase",
+              color: "#9b5f46",
+            }}
+          >
+            Client Stories
+          </Box>
+          <Box
+            component="h2"
+            sx={{
+              mt: 1.5,
+              mb: 1.5,
+              fontFamily: "Playfair Display, serif",
+              fontSize: { xs: 38, md: 52 },
+              fontWeight: 600,
+              color: "#3a261f",
+              lineHeight: 1.04,
+            }}
+          >
+            Reviews as Editorial Notes
+          </Box>
+          <Box sx={{ maxWidth: 640, color: "#6e5a4c", lineHeight: 1.7 }}>
+            Honest fragrance diaries from our community, crafted into a cleaner
+            magazine-style wall so each voice feels intentional and easy to scan.
+          </Box>
         </Box>
+
         <Box
-          component="h2"
           sx={{
-            mt: 1.5,
-            fontFamily: "Playfair Display, serif",
-            fontSize: 48,
-            fontWeight: 500,
-            color: "#3a2e12",
+            borderRadius: 4,
+            border: "1px solid rgba(122,71,52,0.2)",
+            background: "#fffdfb",
+            p: { xs: 3, md: 4 },
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
           }}
         >
-          Golden Reviews
+          <Box sx={{ color: "#9b5f46", letterSpacing: 2, fontSize: 11 }}>
+            CURRENT ISSUE
+          </Box>
+          <Box sx={{ mt: 1, color: "#3f2d24", fontSize: 26, fontFamily: "Playfair Display, serif" }}>
+            {reviews.length} Featured testimonials
+          </Box>
+          <Box sx={{ mt: 1.5, color: "#766456", fontSize: 14 }}>
+            Includes reactions, likes, and saved posts without changing any backend flow.
+          </Box>
         </Box>
       </Box>
 
       <Box
         sx={{
-          maxWidth: 1300,
+          maxWidth: 1240,
           mx: "auto",
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: "70px 48px",
-          justifyItems: "center",
+          gridTemplateColumns: {
+            xs: "1fr",
+            sm: "repeat(2, minmax(0, 1fr))",
+            lg: "repeat(3, minmax(0, 1fr))",
+          },
+          gap: "28px",
         }}
       >
         {reviews.map((review, i) => (
@@ -86,10 +130,11 @@ export default function ReviewsPage() {
             key={review.id}
             sx={{
               width: "100%",
-              maxWidth: 340,
-              animation: "fadeUp 0.8s ease forwards",
-              animationDelay: `${i * 100}ms`,
-              opacity: 0,
+              transition: "transform 0.35s ease",
+              alignSelf: i === 1 ? "stretch" : "start",
+              "&:hover": {
+                transform: "translateY(-6px)",
+              },
             }}
           >
             <ReviewCard {...review} />

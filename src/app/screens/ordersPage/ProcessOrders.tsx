@@ -12,7 +12,7 @@ import { useGlobals } from "../../hooks/useGlobals";
 import { T } from "../../../lib/types/common";
 import { OrderStatus } from "../../../lib/enums/order.enum";
 import OrderService from "../../services/ordersService";
-import { sweetErrorHandling } from "../../../lib/sweetAlert";
+import { sweetConfirmAlert, sweetErrorHandling } from "../../../lib/sweetAlert";
 import { Perfume } from "../../../lib/types/perfume";
 
 /** REDUX SLICE & SELECTOR */
@@ -42,7 +42,10 @@ export default function ProcessOrders(props:ProcessOrderProps) {
                 orderStatus:OrderStatus.DELIVERED,
             };
         
-            const confirmation = window.confirm("I confirm recieved order");
+            const confirmation = await sweetConfirmAlert(
+                "I confirm I have received this order.",
+                "Yes, confirm"
+            );
             if(confirmation) {
                 const order = new OrderService();
                 await order.updateOrder(input);
@@ -57,47 +60,52 @@ export default function ProcessOrders(props:ProcessOrderProps) {
 
     return (
         <TabPanel value={"2"}>
-            <Stack>
+            <Stack spacing={6} className="gold-orders-wrapper">
                 {processOrders?.map((order: Order) => {
                     return (
-                        <Box key={order._id} className="order-main-box">
-                            <Box className="order-box-scroll">
+                        <Box key={order._id} className="gold-order-card">
+                            <Box className="gold-order-items">
                                 {order?.orderItems?.map((item: OrderItem) => {
-                                    const perfume: Perfume = order.perfumeDate.filter(
+                                    const perfume = order.perfumeDate.find(
                                         (ele: Perfume) => item.perfumeId === ele._id
-                                    )[0];
-                                    const imagePath = `${serverApi}/${perfume.perfumeImages[0]}`;
+                                    );
+                                    const imagePath = perfume?.perfumeImages?.[0]
+                                        ? `${serverApi}/${perfume.perfumeImages[0]}`
+                                        : "/img/bedroom.png";
                                     return (
-                                        <Box key={item._id} className="orders-name-price">
-                                            <img
-                                                src={imagePath}
-                                                className="order-dish-img"
-                                            />
-                                            <p className="title-dish">{perfume.perfumeName}</p>
-                                            <Box className="price-box">
-                                            <p>{"$" + item.itemPrice}</p>                                      
-                                            <img src="/icons/close.svg" />
-                                            <p>${item.itemQuantity}</p>                                    
-                                            <img src="/icons/pause.svg" />
-                                            <p>${item.itemQuantity * item.itemPrice}</p>
-                                            </Box>
+                                        <Box key={item._id} className="gold-order-item">
+                                            <div className="gold-order-img">
+                                                <img
+                                                    src={imagePath}
+                                                    alt={perfume?.perfumeName || "Unknown perfume"}
+                                                />
+                                            </div>
+                                            <div className="gold-order-info">
+                                                <h4>{perfume?.perfumeName || "Unknown Perfume"}</h4>
+                                                <p>
+                                                    ${item.itemPrice} x {item.itemQuantity}
+                                                </p>
+                                            </div>
+                                            <div className="gold-order-total">
+                                                ${item.itemQuantity * item.itemPrice}
+                                            </div>
                                         </Box>
                                     );
                                 })}
                             </Box>
 
-                            {/* Summary Section */}
-                            <Box className="total-price-box">
-                                <Box className="box-total">
-                                    <p>Perfume price</p>
-                        
-                                    <p>${order.orderTotal}</p>
-                                </Box>
-                                <p className="data-compl">
-                                    {moment().format("YY-MM-DD HH:mm")}
-                                </p>
-                                <Button variant="contained" className="verify-button"
-                                value = {order._id}
+                            <Box className="gold-order-footer">
+                                <div>
+                                    <p className="gold-order-label">Perfume price</p>
+                                    <p className="gold-order-price">${order.orderTotal}</p>
+                                    <span className="gold-order-date">
+                                        {moment((order as any).createdAt || order.createAt || new Date()).format("YY-MM-DD HH:mm")}
+                                    </span>
+                                </div>
+                                <Button
+                                variant="contained"
+                                className="gold-btn-solid"
+                                value={order._id}
                                 onClick={finishOrderHandler}
                                 >
                                     Verify to Fulfil
@@ -108,12 +116,11 @@ export default function ProcessOrders(props:ProcessOrderProps) {
                 })}
 
                 {/* No Image Fallback */}
-                {!processOrders || processOrders.length === 0 && (
-                    <Box display={"flex"} flexDirection={"row"} justifyContent={"center"}>
-                        <img
-                            src="/icons/noimage-list.svg"
-                            style={{ width: 300, height: 300 }}
-                        />
+                {(!processOrders || processOrders.length === 0) && (
+                    <Box className="gold-empty-state">
+                        <img src="/icons/noimage-list.svg" width={200} alt="No processing orders" />
+                        <h4>No processing orders yet</h4>
+                        <p>Move a paused order to payment and track progress here.</p>
                     </Box>
                 )}
             </Stack>

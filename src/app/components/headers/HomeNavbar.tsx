@@ -24,6 +24,7 @@ import { serverApi } from "../../../lib/config";
 import { CartItem } from "../../../lib/types/search";
 import { Perfume } from "../../../lib/types/perfume";
 import { Logout } from "@mui/icons-material";
+import MenuIcon from "@mui/icons-material/Menu";
 
 interface HomeNavbarProps {
   cartItems: CartItem[];
@@ -56,6 +57,13 @@ export function HomeNavbar(props: HomeNavbarProps) {
 
   const { authMember } = useGlobals();
   const [featuredPerfumes, setFeaturedPerfumes] = useState<Perfume[]>([]);
+  const [mobileMenuAnchorEl, setMobileMenuAnchorEl] = useState<null | HTMLElement>(null);
+  const mobileMenuOpen = Boolean(mobileMenuAnchorEl);
+  const navItems = [
+    { label: "Home", to: "/" },
+    { label: "Perfumes", to: "/perfumes" },
+    { label: "Reviews", to: "/reviews" },
+  ];
 
   useEffect(() => {
     
@@ -78,9 +86,9 @@ export function HomeNavbar(props: HomeNavbarProps) {
   elevation={0}
   sx={{
      background:
-          "linear-gradient(180deg, rgba(20,20,20,0.92), rgba(10,10,10,0.92))",
+          "linear-gradient(180deg, rgba(55,34,26,0.95), rgba(35,23,18,0.95))",
     backdropFilter: "blur(14px)",
-    borderBottom: "1px solid rgba(227,192,141,0.15)",
+    borderBottom: "1px solid rgba(225,181,159,0.25)",
   }}
 >
   <Container maxWidth="lg">
@@ -93,7 +101,7 @@ export function HomeNavbar(props: HomeNavbarProps) {
           fontFamily: "Playfair Display",
           fontSize: 26,
           letterSpacing: 3,
-          color: "#e3c08d",
+          color: "#f4d7c8",
           textDecoration: "none",
           position: "relative",
           "&::after": {
@@ -103,58 +111,61 @@ export function HomeNavbar(props: HomeNavbarProps) {
             bottom: -6,
             width: "100%",
             height: 2,
-            background: "linear-gradient(90deg, #e3c08d, transparent)",
+            background: "linear-gradient(90deg, #c27a5d, transparent)",
           },
         }}
       >
         ENIGMATIC PERFUMES
       </Typography>
 
-      {/* Menu */}
-      <Stack direction="row" spacing={4} alignItems="center">
-        {["Home", "Perfumes", "Reviews"].map((item) => (
+      {/* Desktop Menu */}
+      <Stack
+        direction="row"
+        spacing={4}
+        alignItems="center"
+        sx={{ display: { xs: "none", md: "flex" } }}
+      >
+        {navItems.map((item) => (
           <NavLink
-                key={item}
-                to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
-                style={{
-                    textDecoration: "none",
-                    color: "#f5f5f5",
-                    fontWeight: 500,
-                    letterSpacing: 1,
-                }}
-                activeStyle={{
-                    color: "#e3c08d",
-                }}
-                >
-                {item}
-        </NavLink>
-
+            key={item.label}
+            to={item.to}
+            style={{
+              textDecoration: "none",
+              color: "#f5f5f5",
+              fontWeight: 500,
+              letterSpacing: 1,
+            }}
+            activeStyle={{ color: "#f4d7c8" }}
+          >
+            {item.label}
+          </NavLink>
         ))}
 
         {authMember && (
           <>
             <NavLink
-                to="/orders"
-                style={{
-                    textDecoration: "none",
-                    color: "#f5f5f5",
-                    fontWeight: 500,
-                    letterSpacing: 1,
-                }}
-                activeStyle={{ color: "#e3c08d" }}
-                >
-                Orders
+              to="/orders"
+              style={{
+                textDecoration: "none",
+                color: "#f5f5f5",
+                fontWeight: 500,
+                letterSpacing: 1,
+              }}
+              activeStyle={{ color: "#f4d7c8" }}
+            >
+              Orders
             </NavLink>
 
-            <NavLink 
-                to="/member-page" 
-                style= {{
-                    textDecoration: "none",
-                    color: "#f5f5f5",
-                    fontWeight: 500,
-                    letterSpacing: 1,
-                }}
-                activeStyle={{ color: "#e3c08d" }}>
+            <NavLink
+              to="/member-page"
+              style={{
+                textDecoration: "none",
+                color: "#f5f5f5",
+                fontWeight: 500,
+                letterSpacing: 1,
+              }}
+              activeStyle={{ color: "#f4d7c8" }}
+            >
               My Page
             </NavLink>
           </>
@@ -178,12 +189,12 @@ export function HomeNavbar(props: HomeNavbarProps) {
               fontWeight: 600,
               letterSpacing: 1.5,
               color: "#000",
-              background: "linear-gradient(135deg, #e3c08d, #b8945e)",
-              boxShadow: "0 8px 25px rgba(227,192,141,0.35)",
+              background: "linear-gradient(135deg, #c27a5d, #7a4734)",
+              boxShadow: "0 8px 25px rgba(122,71,52,0.35)",
               transition: "all 0.3s ease",
               "&:hover": {
                 transform: "translateY(-2px)",
-                boxShadow: "0 12px 35px rgba(227,192,141,0.5)",
+                boxShadow: "0 12px 35px rgba(122,71,52,0.5)",
               },
             }}
           >
@@ -191,32 +202,134 @@ export function HomeNavbar(props: HomeNavbarProps) {
           </Button>
         ) : (
           <IconButton>
-  <Avatar
-    onClick={handleLogoutClick}
-    src={
-      authMember.memberImage
-        ? `${serverApi}/${authMember.memberImage}`
-        : "/img/black-chair.png"
-    }
-    sx={{
-      cursor: "pointer",
-      width: 38,
-      height: 38,
-      border: "2px solid #e3c08d",
-      boxShadow: "0 0 15px rgba(227,192,141,0.5)",
-      transition: "all 0.3s ease",
-      "&:hover": {
-        transform: "scale(1.08)",
-      },
-    }}
-  />
-</IconButton>
-
+            <Avatar
+              onClick={handleLogoutClick}
+              src={
+                authMember.memberImage
+                  ? `${serverApi}/${authMember.memberImage}`
+                  : "/icons/default-user.svg"
+              }
+              sx={{
+                cursor: "pointer",
+                width: 38,
+                height: 38,
+                border: "2px solid #c27a5d",
+                boxShadow: "0 0 15px rgba(122,71,52,0.45)",
+                transition: "all 0.3s ease",
+                "&:hover": {
+                  transform: "scale(1.08)",
+                },
+              }}
+            />
+          </IconButton>
         )}
+      </Stack>
+
+      {/* Mobile Menu */}
+      <Stack
+        direction="row"
+        spacing={1}
+        alignItems="center"
+        sx={{ display: { xs: "flex", md: "none" } }}
+      >
+        <Basket
+          cartItems={cartItems}
+          onAdd={onAdd}
+          onDelete={onDelete}
+          onDeleteAll={onDeleteAll}
+          onRemove={onRemove}
+        />
+
+        {!authMember ? (
+          <Button
+            onClick={() => setLoginOpen(true)}
+            sx={{
+              px: 2.2,
+              py: 0.8,
+              borderRadius: "24px",
+              fontWeight: 600,
+              letterSpacing: 1.2,
+              fontSize: 12,
+              color: "#000",
+              background: "linear-gradient(135deg, #c27a5d, #7a4734)",
+            }}
+          >
+            LOGIN
+          </Button>
+        ) : (
+          <IconButton onClick={handleLogoutClick}>
+            <Avatar
+              src={
+                authMember.memberImage
+                  ? `${serverApi}/${authMember.memberImage}`
+                  : "/icons/default-user.svg"
+              }
+              sx={{
+                width: 34,
+                height: 34,
+                border: "2px solid #c27a5d",
+              }}
+            />
+          </IconButton>
+        )}
+
+        <IconButton
+          onClick={(event) => setMobileMenuAnchorEl(event.currentTarget)}
+          sx={{ color: "#f4d7c8" }}
+        >
+          <MenuIcon />
+        </IconButton>
       </Stack>
     </Toolbar>
   </Container>
 </AppBar>
+    <Menu
+      anchorEl={mobileMenuAnchorEl}
+      open={mobileMenuOpen}
+      onClose={() => setMobileMenuAnchorEl(null)}
+      transformOrigin={{ horizontal: "right", vertical: "top" }}
+      anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+      PaperProps={{
+        sx: {
+          minWidth: 180,
+          background: "rgba(24,24,24,0.95)",
+          color: "#f5f5f5",
+          border: "1px solid rgba(225,181,159,0.3)",
+        },
+      }}
+    >
+      {navItems.map((item) => (
+        <MenuItem
+          key={item.label}
+          component={Link}
+          to={item.to}
+          onClick={() => setMobileMenuAnchorEl(null)}
+          sx={{ color: "#f5f5f5" }}
+        >
+          {item.label}
+        </MenuItem>
+      ))}
+      {authMember && (
+        <MenuItem
+          component={Link}
+          to="/orders"
+          onClick={() => setMobileMenuAnchorEl(null)}
+          sx={{ color: "#f5f5f5" }}
+        >
+          Orders
+        </MenuItem>
+      )}
+      {authMember && (
+        <MenuItem
+          component={Link}
+          to="/member-page"
+          onClick={() => setMobileMenuAnchorEl(null)}
+          sx={{ color: "#f5f5f5" }}
+        >
+          My Page
+        </MenuItem>
+      )}
+    </Menu>
      <Menu
                             anchorEl={anchorEl}
                             id="account-menu"
@@ -256,7 +369,7 @@ export function HomeNavbar(props: HomeNavbarProps) {
 
                             >
                                 <ListItemIcon>
-                                    <Logout fontSize="small" style={{ color: 'blue' }} />
+                                    <Logout fontSize="small" style={{ color: '#9b5f46' }} />
                                 </ListItemIcon>
                                 Logout
                             </MenuItem>
@@ -291,7 +404,7 @@ export function HomeNavbar(props: HomeNavbarProps) {
                   fontFamily: "Playfair Display",
                   fontSize: 54,
                   lineHeight: 1.1,
-                  color: "#e3c08d",
+                  color: "#f2ccb9",
                 }}
               >
                 A scent that
@@ -314,7 +427,7 @@ export function HomeNavbar(props: HomeNavbarProps) {
                     borderRadius: 50,
                     fontSize: 16,
                     background:
-                      "linear-gradient(135deg, #e3c08d, #b8945e)",
+                      "linear-gradient(135deg, #c27a5d, #7a4734)",
                     color: "#000",
                     fontWeight: 600,
                   }}
@@ -332,7 +445,7 @@ export function HomeNavbar(props: HomeNavbarProps) {
   sx={{
     py: 14,
     background:
-      "linear-gradient(180deg, #f7f0e4 0%, #f1ece3 100%)",
+      "linear-gradient(180deg, #fdf9f5 0%, #f8f1ea 100%)",
   }}
 >
   <Container maxWidth="lg">
@@ -367,7 +480,7 @@ export function HomeNavbar(props: HomeNavbarProps) {
           height: 3,
           borderRadius: 2,
           background:
-            "linear-gradient(90deg, #e3c08d, #b8945e)",
+            "linear-gradient(90deg, #c27a5d, #7a4734)",
         }}
       />
     </Stack>
@@ -428,7 +541,7 @@ export function HomeNavbar(props: HomeNavbarProps) {
               position: "absolute",
               inset: 0,
               background:
-                "linear-gradient(180deg, rgba(236, 180, 58, 0) 30%, rgba(172, 139, 67, 0.7))",
+                "linear-gradient(180deg, rgba(122, 71, 52, 0) 30%, rgba(74, 47, 36, 0.7))",
               opacity: 0,
               transition: "0.4s ease",
             }}
@@ -451,7 +564,7 @@ export function HomeNavbar(props: HomeNavbarProps) {
               sx={{
                 fontWeight: 600,
                 fontSize: 16,
-                color: "#b8945e",
+                color: "#9b5f46",
               }}
             >
               ${item.perfumePrice}
@@ -475,12 +588,12 @@ export function HomeNavbar(props: HomeNavbarProps) {
           fontSize: 14,
           color: "#000",
           background:
-            "linear-gradient(135deg, #e3c08d, #b8945e)",
-          boxShadow: "0 15px 35px rgba(184,148,94,0.45)",
+            "linear-gradient(135deg, #c27a5d, #7a4734)",
+          boxShadow: "0 15px 35px rgba(122,71,52,0.45)",
           transition: "all 0.35s ease",
           "&:hover": {
             transform: "translateY(-3px)",
-            boxShadow: "0 25px 50px rgba(184,148,94,0.6)",
+            boxShadow: "0 25px 50px rgba(122,71,52,0.55)",
           },
         }}
       >

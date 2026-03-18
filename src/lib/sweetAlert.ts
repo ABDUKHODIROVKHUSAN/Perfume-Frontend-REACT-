@@ -59,3 +59,29 @@ export const sweetFailureProvider = (
     }
   });
 };
+
+export const sweetConfirmAlert = async (
+  text: string,
+  confirmButtonText: string = "Yes, continue"
+): Promise<boolean> => {
+  const result = await Swal.fire({
+    icon: "question",
+    title: "Please Confirm",
+    text,
+    showCancelButton: true,
+    confirmButtonText,
+    cancelButtonText: "Cancel",
+    background: "#fff9f4",
+    color: "#3f2b22",
+    confirmButtonColor: "#7a4734",
+    cancelButtonColor: "#c8b6aa",
+    reverseButtons: true,
+    customClass: {
+      popup: "swal-terracotta-popup",
+      confirmButton: "swal-terracotta-confirm",
+      cancelButton: "swal-terracotta-cancel",
+    },
+  });
+
+  return !!result.isConfirmed;
+};

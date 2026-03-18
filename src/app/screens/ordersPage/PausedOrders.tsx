@@ -4,14 +4,15 @@ import { createSelector } from "reselect";
 import { retrievePausedOrders } from "./selector";
 import { useSelector } from "react-redux";
 import { Messages, serverApi } from "../../../lib/config";
-import { sweetErrorHandling } from "../../../lib/sweetAlert";
+import { sweetConfirmAlert, sweetErrorHandling } from "../../../lib/sweetAlert";
 import { T } from "../../../lib/types/common";
 import { OrderStatus } from "../../../lib/enums/order.enum";
 import { useGlobals } from "../../hooks/useGlobals";
 import OrderService from "../../services/ordersService";
-import { Order, OrderItem, OrderUpdateInput } from "../../../lib/types/order";
+import { Order, OrderItem } from "../../../lib/types/order";
 import { Perfume } from "../../../lib/types/perfume";
 import moment from "moment";
+import { useHistory } from "react-router-dom";
 
 /** REDUX */
 const pausedOrdersRetriever = createSelector(
@@ -26,13 +27,17 @@ interface PausedOrdersProps {
 export default function PausedOrders({ setValue }: PausedOrdersProps) {
   const { authMember, setOrderBuilder } = useGlobals();
   const { pausedOrders } = useSelector(pausedOrdersRetriever);
+  const history = useHistory();
 
   const deleteOrderHandler = async (e: T) => {
     try {
       if (!authMember) throw Error(Messages.error2);
       const orderId = e.target.value;
 
-      const confirmation = window.confirm("Do you want to delete order");
+      const confirmation = await sweetConfirmAlert(
+        "Do you want to cancel this order?",
+        "Yes, cancel"
+      );
       if (confirmation) {
         const order = new OrderService();
         await order.updateOrder({
@@ -51,7 +56,10 @@ export default function PausedOrders({ setValue }: PausedOrdersProps) {
       if (!authMember) throw Error(Messages.error2);
       const orderId = e.target.value;
 
-      const confirmation = window.confirm("Do you want to proceed with payment");
+      const confirmation = await sweetConfirmAlert(
+        "Do you want to proceed with payment?",
+        "Yes, proceed"
+      );
       if (confirmation) {
         const order = new OrderService();
         await order.updateOrder({
@@ -84,7 +92,10 @@ export default function PausedOrders({ setValue }: PausedOrdersProps) {
                 return (
                   <Box key={item._id} className="gold-order-item">
                     <div className="gold-order-img">
-                      <img src={imagePath} />
+                      <img
+                        src={imagePath}
+                        alt={perfume?.perfumeName || "Unknown perfume"}
+                      />
                     </div>
 
                     <div className="gold-order-info">
@@ -107,7 +118,7 @@ export default function PausedOrders({ setValue }: PausedOrdersProps) {
                 <p className="gold-order-label">Perfume price</p>
                 <p className="gold-order-price">${order.orderTotal}</p>
                 <span className="gold-order-date">
-                  {moment().format("YY-MM-DD HH:mm")}
+                  {moment((order as any).createdAt || order.createAt || new Date()).format("YY-MM-DD HH:mm")}
                 </span>
               </div>
 
@@ -133,8 +144,13 @@ export default function PausedOrders({ setValue }: PausedOrdersProps) {
         ))}
 
         {(!pausedOrders || pausedOrders.length === 0) && (
-          <Box display="flex" justifyContent="center">
-            <img src="/icons/noimage-list.svg" width={280} />
+          <Box className="gold-empty-state">
+            <img src="/icons/noimage-list.svg" width={200} alt="No paused orders" />
+            <h4>No paused orders yet</h4>
+            <p>Create your first order and it will appear here.</p>
+            <Button className="gold-btn-solid" onClick={() => history.push("/perfumes")}>
+              Explore Perfumes
+            </Button>
           </Box>
         )}
       </Stack>

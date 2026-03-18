@@ -13,6 +13,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import { useGlobals } from "../../hooks/useGlobals";
 
 /* ===== STYLES ===== */
 
@@ -20,11 +21,11 @@ const FooterWrapper = styled(Box)`
   width: 100%;
   background: radial-gradient(
       circle at top,
-      rgba(227, 192, 141, 0.08),
+      rgba(194, 122, 93, 0.15),
       transparent 60%
     ),
-    linear-gradient(160deg, #1c1c1c, #111);
-  color: #e3c08d;
+    linear-gradient(160deg, #3a251d, #241813);
+  color: #f2ccb9;
   padding: 80px 0 40px;
 `;
 
@@ -34,33 +35,33 @@ const BrandTitle = styled(Typography)`
 `;
 
 const FooterLink = styled(Link)`
-  color: #cfcfcf;
+  color: #eaded4;
   text-decoration: none;
   font-size: 15px;
   transition: all 0.3s ease;
 
   &:hover {
-    color: #e3c08d;
+    color: #f6d9ca;
     transform: translateX(6px);
   }
 `;
 
 const SocialIcon = styled(IconButton)`
-  color: #e3c08d;
-  border: 1px solid rgba(227, 192, 141, 0.3);
+  color: #f2ccb9;
+  border: 1px solid rgba(225, 181, 159, 0.35);
   backdrop-filter: blur(4px);
   transition: all 0.35s ease;
 
   &:hover {
-    color: #111;
-    background: #e3c08d;
+    color: #2f1f18;
+    background: #f2ccb9;
     transform: translateY(-4px) scale(1.15);
-    box-shadow: 0 10px 30px rgba(227, 192, 141, 0.4);
+    box-shadow: 0 10px 30px rgba(122, 71, 52, 0.4);
   }
 `;
 
 const SoftText = styled(Typography)`
-  color: #b9b9b9;
+  color: #d7c4b8;
   font-size: 14px;
   line-height: 1.7;
 `;
@@ -68,7 +69,7 @@ const SoftText = styled(Typography)`
 /* ===== COMPONENT ===== */
 
 export default function Footer() {
-  const authMember = null;
+  const { authMember } = useGlobals();
 
   return (
     <FooterWrapper>
@@ -86,7 +87,7 @@ export default function Footer() {
 
             <Typography
               variant="h6"
-              sx={{ mt: 2, color: "#e3c08d", fontWeight: 500 }}
+              sx={{ mt: 2, color: "#f2ccb9", fontWeight: 500 }}
             >
               Crafted for moments that linger
             </Typography>
@@ -123,10 +124,10 @@ export default function Footer() {
 
             <Stack spacing={1.2}>
               <FooterLink to="/">Home</FooterLink>
-              <FooterLink to="/perfume">Perfumes</FooterLink>
+              <FooterLink to="/perfumes">Perfumes</FooterLink>
               {authMember && <FooterLink to="/orders">Orders</FooterLink>}
-              <FooterLink to="/review">Reviews</FooterLink>
-              <FooterLink to="/help">My Page</FooterLink>
+              <FooterLink to="/reviews">Reviews</FooterLink>
+              {authMember && <FooterLink to="/member-page">My Page</FooterLink>}
             </Stack>
           </Box>
 
@@ -140,10 +141,10 @@ export default function Footer() {
             </Typography>
 
             <Stack spacing={1.2}>
-              <SoftText>📍 Busan, South Korea</SoftText>
-              <SoftText>📞 +82 60 331 11 31</SoftText>
-              <SoftText>✉ SentryVoid@gmail.com</SoftText>
-              <SoftText>⏰ Open 24 / 7</SoftText>
+              <SoftText>Busan, South Korea</SoftText>
+              <SoftText>+82 60 331 11 31</SoftText>
+              <SoftText>sentryvoid@gmail.com</SoftText>
+              <SoftText>Open 24 / 7</SoftText>
             </Stack>
           </Box>
         </Stack>
@@ -152,7 +153,7 @@ export default function Footer() {
           sx={{
             mt: 6,
             mb: 3,
-            backgroundColor: "#e3c08d",
+            backgroundColor: "#f2ccb9",
             opacity: 0.15,
           }}
         />
@@ -161,7 +162,7 @@ export default function Footer() {
           variant="body2"
           sx={{
             textAlign: "center",
-            color: "#9a9a9a",
+            color: "#d7c4b8",
             fontSize: 13,
           }}
         >

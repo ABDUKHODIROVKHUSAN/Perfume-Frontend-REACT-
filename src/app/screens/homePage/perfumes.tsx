@@ -11,36 +11,36 @@ import { useHistory } from "react-router-dom";
 type Perfume = {
   name: string;
   image: string;
-  collection: string;
+  brand: string;
 };
 
 const rooms: Perfume[] = [
   {
     name: "Margot Robbie",
     image: "/img/Margoth.jpg",
-    collection: "Woman",
+    brand: "Chanel",
   },
   {
     name: "Chris Pine",
     image: "/img/Pine.jpg",
-    collection: "Man",
+    brand: "Dior",
   },
   {
     name: "Cristiano Ronaldo",
     image: "/img/cr7.jpg",
-    collection: "OFFICE",
+    brand: "Dior",
   },
 ];
 
 const RoomsSection: React.FC = () => {
   const history = useHistory();
 
-  const handleRoomClick = (collection: string) => {
-    history.push(`/perfumes?collection=${collection}`);
+  const handleRoomClick = (brand: string) => {
+    history.push(`/perfumes?brand=${encodeURIComponent(brand)}`);
   };
 
   const handleShowAll = () => {
-    history.push("/perfumes?collection=ALL");
+    history.push("/perfumes?brand=ALL");
   };
 
   return (
@@ -48,7 +48,7 @@ const RoomsSection: React.FC = () => {
       sx={{
         py: 18,
         background:
-          "linear-gradient(180deg, #f7f0e4 0%, #f1ece3 100%)",
+          "linear-gradient(180deg, #fdf9f5 0%, #f8f1ea 100%)",
       }}
     >
       <Container maxWidth="lg">
@@ -69,7 +69,7 @@ const RoomsSection: React.FC = () => {
             {rooms.map((room) => (
               <Box
                 key={room.name}
-                onClick={() => handleRoomClick(room.collection)}
+                onClick={() => handleRoomClick(room.brand)}
                 sx={{
                   width: {
                     xs: "100%",
@@ -130,7 +130,7 @@ const RoomsSection: React.FC = () => {
                     right: 26,
                     fontFamily: "Playfair Display",
                     fontSize: 24,
-                    color: "#e3c08d",
+                    color: "#f4d7c8",
                     letterSpacing: 1,
                     zIndex: 2,
                   }}
@@ -153,7 +153,7 @@ const RoomsSection: React.FC = () => {
               sx={{
                 fontFamily: "Playfair Display",
                 fontSize: 40,
-                color: "#e3c08d",
+                color: "#4a2f24",
               }}
             >
               Celebrity Choices
@@ -182,16 +182,16 @@ const RoomsSection: React.FC = () => {
                 fontWeight: 700,
                 letterSpacing: 1,
                 fontSize: 16,
-                color: "#000",
+                color: "#fff7f2",
                 background:
-                  "linear-gradient(135deg, #e3c08d, #b8945e)",
+                  "linear-gradient(135deg, #c27a5d, #7a4734)",
                 boxShadow:
-                  "0 18px 40px rgba(227,192,141,0.45)",
+                  "0 18px 40px rgba(122,71,52,0.38)",
                 transition: "all 0.35s ease",
                 "&:hover": {
                   transform: "translateY(-3px)",
                   boxShadow:
-                    "0 28px 60px rgba(227,192,141,0.65)",
+                    "0 28px 60px rgba(122,71,52,0.52)",
                 },
               }}
             >

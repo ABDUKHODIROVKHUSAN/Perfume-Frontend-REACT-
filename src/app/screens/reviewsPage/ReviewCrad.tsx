@@ -45,7 +45,7 @@ export default function ReviewCard({
           component="span"
           sx={{
             fontSize: 18,
-            color: i < count ? "#b89b5e" : "#d8caa2",
+            color: i < Math.round(count) ? "#9b5f46" : "#e1cbbd",
           }}
         >
           ★
@@ -58,8 +58,9 @@ export default function ReviewCard({
     <Card
       sx={{
         borderRadius: 3,
-        background: "linear-gradient(180deg, #f7f0e4, #e9d9b0)",
-        boxShadow: "0 20px 45px rgba(184,155,94,0.35)",
+        border: "1px solid rgba(122,71,52,0.18)",
+        background: "linear-gradient(180deg, #fffefc, #f8efe8)",
+        boxShadow: "0 20px 45px rgba(74,47,36,0.16)",
         transition: "transform 0.45s ease",
         "&:hover": {
           transform: "translateY(-10px)",
@@ -71,8 +72,8 @@ export default function ReviewCard({
           <Avatar
             src={customerProfilePic || "/icons/img/Gucci.png"}
             sx={{
-              border: "2px solid #b89b5e",
-              bgcolor: "#f6f0df",
+              border: "2px solid #c27a5d",
+              bgcolor: "#fff3eb",
             }}
           />
         }
@@ -80,7 +81,7 @@ export default function ReviewCard({
           <Typography
             sx={{
               fontWeight: 600,
-              color: "#3a2e12",
+              color: "#3a2a21",
             }}
           >
             {customerName}
@@ -91,7 +92,7 @@ export default function ReviewCard({
             sx={{
               fontSize: 13,
               letterSpacing: 1,
-              color: "#8d7745",
+              color: "#8a6f5c",
             }}
           >
             {productName}
@@ -115,7 +116,7 @@ export default function ReviewCard({
         <Typography
           sx={{
             fontSize: 14,
-            color: "#5c4a25",
+            color: "#665749",
             lineHeight: 1.7,
           }}
         >
@@ -127,7 +128,7 @@ export default function ReviewCard({
         <Box>
           <Tooltip title="React">
             <IconButton onClick={() => setEmoji(emoji === "😍" ? "😎" : "😍")}>
-              <EmojiEmotionsIcon sx={{ color: "#b89b5e" }} />
+              <EmojiEmotionsIcon sx={{ color: "#9b5f46" }} />
               <Box component="span" sx={{ ml: 0.5 }}>
                 {emoji}
               </Box>
@@ -136,20 +137,20 @@ export default function ReviewCard({
 
           <Tooltip title="Like">
             <IconButton onClick={() => setLiked(!liked)}>
-              <ThumbUpAltIcon sx={{ color: liked ? "#3a2e12" : "#9b8451" }} />
+              <ThumbUpAltIcon sx={{ color: liked ? "#6f3f2e" : "#9b5f46" }} />
             </IconButton>
           </Tooltip>
 
           <Tooltip title="Bookmark">
             <IconButton onClick={() => setBookmarked(!bookmarked)}>
-              <BookmarkIcon sx={{ color: bookmarked ? "#3a2e12" : "#9b8451" }} />
+              <BookmarkIcon sx={{ color: bookmarked ? "#6f3f2e" : "#9b5f46" }} />
             </IconButton>
           </Tooltip>
         </Box>
 
         <Tooltip title="Share">
           <IconButton>
-            <ShareIcon sx={{ color: "#9b8451" }} />
+            <ShareIcon sx={{ color: "#9b5f46" }} />
           </IconButton>
         </Tooltip>
       </CardActions>

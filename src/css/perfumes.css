@@ -1,340 +1,318 @@
-/* ===============================
-   ROOT
-================================ */
+/* Perfumes listing + detail page (editorial terracotta theme) */
 .gold-soft-perfumes {
-  background: linear-gradient(180deg, #f7f0e4, #f1ece3);
-  padding: 90px 28px 120px;
+  background: linear-gradient(180deg, #f9f4ee, #fdf9f4 52%, #f6eee6);
+  padding: 72px 28px 100px;
 }
 
-/* ===============================
-   HEADER
-================================ */
 .gold-soft-header {
-  text-align: center;
-  margin-bottom: 70px;
+  max-width: 1240px;
+  margin: 0 auto 52px;
+}
+
+.gold-soft-header-grid {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 20px;
+  align-items: end;
 }
 
 .gold-soft-header span {
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: #b89b5e;
+  color: #9b5f46;
 }
 
 .gold-soft-header h2 {
-  margin-top: 14px;
+  margin: 10px 0 10px;
   font-family: "Playfair Display", serif;
-  font-size: 50px;
-  font-weight: 500;
-  color: #3a2e12;
+  font-size: clamp(32px, 5vw, 54px);
+  font-weight: 600;
+  line-height: 1.08;
+  color: #3d2a21;
 }
 
-/* ===============================
-   TABS
-================================ */
+.gold-soft-intro-copy {
+  margin: 0;
+  max-width: 680px;
+  color: #6f5a4b;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.gold-soft-summary-card {
+  border: 1px solid rgba(122, 71, 52, 0.22);
+  background: linear-gradient(180deg, #fffaf5, #f4e7dc);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.gold-soft-summary-card strong {
+  font-size: 32px;
+  color: #4a2f24;
+  line-height: 1;
+}
+
+.gold-soft-summary-card p,
+.gold-soft-summary-card em {
+  margin: 0;
+  color: #705d4f;
+  font-size: 12px;
+}
+
 .gold-soft-tabs {
   display: flex;
   justify-content: center;
-  gap: 30px;
-  margin-bottom: 80px;
+  gap: 10px;
+  margin: 0 auto 56px;
   flex-wrap: wrap;
 }
 
 .gold-soft-tab {
-  background: transparent;
-  border: none;
-  font-size: 13px;
-  letter-spacing: 2px;
+  background: rgba(255, 252, 248, 0.92);
+  border: 1px solid rgba(122, 71, 52, 0.22);
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: 1.4px;
   text-transform: uppercase;
-  color: #8d7745;
+  color: #6f4a39;
   cursor: pointer;
-  position: relative;
-  padding-bottom: 6px;
-}
-
-.gold-soft-tab::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 0;
-  height: 1px;
-  background: #b89b5e;
-  transform: translateX(-50%);
-  transition: width 0.35s ease;
+  padding: 10px 16px;
+  transition: 0.25s ease;
 }
 
 .gold-soft-tab:hover,
 .gold-soft-tab.active {
-  color: #3a2e12;
+  background: #7a4734;
+  color: #fff6f1;
+  border-color: #7a4734;
 }
 
-.gold-soft-tab.active::after {
-  width: 100%;
-}
-
-/* ===============================
-   GRID (CENTERED FIX)
-================================ */
 .gold-soft-grid {
-  max-width: 1300px;
+  max-width: 1320px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   justify-items: center;
-  gap: 80px 50px;
+  gap: 42px 24px;
 }
 
-/* ===============================
-   CARD (ANIMATION)
-================================ */
-/* ===== RESET PREVIOUS CARD STYLES ===== */
 .gold-soft-card {
-  position: relative;
   width: 100%;
-  max-width: 340px;
-  min-height: 140px;
-
-  background:
-    linear-gradient(180deg, #f6f4ef 0%, #efebe2 100%);
-  border-radius: 18px;
-
-  padding: 18px 20px;
-  overflow: hidden;
-
-  box-shadow:
-    0 10px 25px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
-
-  transition:
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-
-  animation: cardEnter 0.9s ease forwards;
+  max-width: 360px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: transform 0.35s ease;
+  animation: cardEnter 0.75s ease forwards;
   opacity: 0;
 }
 
-/* ===== HOVER: PREMIUM LIFT, NO FLASH ===== */
 .gold-soft-card:hover {
-  transform: translateY(-6px) scale(1.015);
-  box-shadow:
-    0 22px 45px rgba(0, 0, 0, 0.14),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  transform: translateY(-5px);
 }
 
-/* ===== SUBTLE METAL REFLECTION ===== */
-.gold-soft-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background:
-    linear-gradient(
-      120deg,
-      transparent 30%,
-      rgba(255, 255, 255, 0.35) 45%,
-      transparent 60%
-    );
-
-  opacity: 0.4;
-  transform: translateX(-100%);
-  transition: transform 1.1s ease;
-  pointer-events: none;
-}
-
-.gold-soft-card:hover::before {
-  transform: translateX(100%);
-}
-
-/* ===== ACCENT LINE (QUIET LUXURY) ===== */
-.gold-soft-card::after {
-  content: "";
-  position: absolute;
-  left: 20px;
-  right: 20px;
-  bottom: 0;
-  height: 2px;
-
-  background: linear-gradient(
-    90deg,
-    #c9b27c,
-    #e6dcc0,
-    #c9b27c
-  );
-
-  opacity: 0.8;
-}
-
-/* ===== ENTRANCE ANIMATION ===== */
 @keyframes cardEnter {
   from {
     opacity: 0;
-    transform: translateY(26px) scale(0.98);
+    transform: translateY(24px);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
 
-
-/* ===============================
-   IMAGE BOX (NO DISTORTION)
-================================ */
 .gold-soft-image {
-  height: 340px;
-  background: linear-gradient(180deg, #f3e7c9, #e9d9b0);
-  border-radius: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 430px;
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 18px 40px rgba(184, 155, 94, 0.25);
+  border: 1px solid rgba(122, 71, 52, 0.14);
+  box-shadow: 0 18px 45px rgba(74, 47, 36, 0.16);
 }
 
 .gold-soft-image img {
-  width: 95%;
-  height: 95%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease;
+  transition: transform 0.45s ease;
 }
 
-
-.gold-soft-card:hover img {
-  transform: scale(1.12) translateY(-6px);
+.gold-soft-card:hover .gold-soft-image img {
+  transform: scale(1.04);
 }
 
-/* ===============================
-   INFO
-================================ */
 .gold-soft-info {
-  text-align: center;
-  padding-top: 24px;
+  margin-top: 10px;
+  background: #fffdfb;
+  border: 1px solid rgba(122, 71, 52, 0.15);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.gold-soft-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
 }
 
 .gold-soft-info h3 {
-  font-family: "Playfair Display", serif;
-  font-size: 22px;
-  font-weight: 500;
-  color: #3a2e12;
-  margin-bottom: 6px;
+  margin: 0;
+  font-size: 24px;
+  color: #3b2a22;
+  line-height: 1.2;
 }
 
-.gold-soft-info p {
-  color: #9b8451;
-  font-size: 15px;
-  margin-bottom: 18px;
+.gold-soft-price {
+  margin: 0;
+  color: #9b5f46;
+  font-size: 17px;
+  font-weight: 700;
 }
 
-/* ===============================
-   ADD BUTTON
-================================ */
-.gold-soft-add {
-  background: none;
-  border: none;
-  font-size: 13px;
-  letter-spacing: 1.5px;
+.gold-soft-collection {
+  margin: 6px 0;
+  color: #836b5b;
+  font-size: 12px;
   text-transform: uppercase;
-  color: #3a2e12;
+  letter-spacing: 0.9px;
+}
+
+.gold-soft-desc {
+  margin: 0;
+  color: #5f5248;
+  font-size: 13px;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.gold-soft-add {
+  margin-top: 14px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #c27a5d, #7a4734);
+  color: #fff9f5;
+  font-size: 11px;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   cursor: pointer;
-  position: relative;
+  padding: 8px 14px;
 }
 
-.gold-soft-add::after {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: #b89b5e;
-  transform: scaleX(0);
-  transition: transform 0.35s ease;
-}
-
-.gold-soft-add:hover::after {
-  transform: scaleX(1);
-}
-
-/* ===============================
-   PAGINATION
-================================ */
 .gold-soft-pagination {
-  margin-top: 110px;
+  margin-top: 72px;
   display: flex;
   justify-content: center;
 }
 
+.gold-soft-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #fffaf4;
+  border: 1px solid rgba(122, 71, 52, 0.28);
+}
 
-/* CHOSEN PRODUCT/
+.gold-soft-nav-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(122, 71, 52, 0.35);
+  background: #ffffff;
+  color: #6f4a39;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
 
-/* ===============================
-   DETAIL LAYOUT
-================================ */
+.gold-soft-nav-btn:hover:not(:disabled) {
+  background: #7a4734;
+  color: #fff6f1;
+}
+
+.gold-soft-nav-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.gold-soft-nav-text {
+  min-width: 56px;
+  text-align: center;
+  color: #6f4a39;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Detail page */
+.clean-detail {
+  background: linear-gradient(180deg, #f9f4ee, #f6eee5);
+}
+
 .gold-detail {
-  padding-top: 70px;
+  padding-top: 28px;
 }
 
 .gold-detail-main {
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 90px;
-  align-items: center;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 34px;
 }
 
-/* ===============================
-   IMAGES
-================================ */
 .gold-detail-images {
   display: flex;
   flex-direction: column;
-  gap: 26px;
+  gap: 16px;
 }
 
 .gold-detail-main-img {
-  height: 460px;
-  border-radius: 28px;
-  background: linear-gradient(180deg, #f3e7c9, #e9d9b0);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 620px;
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 25px 55px rgba(184, 155, 94, 0.35);
+  border: 1px solid rgba(122, 71, 52, 0.14);
+  box-shadow: 0 22px 54px rgba(74, 47, 36, 0.18);
 }
 
 .gold-detail-main-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.8s ease;
 }
 
-.gold-detail-main-img:hover img {
-  transform: scale(1.08);
-}
-
-/* ===============================
-   THUMBNAILS
-================================ */
 .gold-detail-thumbs {
   display: flex;
-  gap: 18px;
+  gap: 10px;
 }
 
 .gold-detail-thumb {
-  width: 90px;
-  height: 90px;
-  border-radius: 16px;
-  background: linear-gradient(180deg, #f3e7c9, #e9d9b0);
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  border: 1px solid rgba(122, 71, 52, 0.2);
+  background: #fffaf4;
   cursor: pointer;
   overflow: hidden;
-  opacity: 0.6;
-  transition: all 0.35s ease;
+  opacity: 0.65;
+}
+
+.gold-detail-thumb.active,
+.gold-detail-thumb:hover {
+  opacity: 1;
+  transform: translateY(-2px);
 }
 
 .gold-detail-thumb img {
@@ -343,64 +321,219 @@
   object-fit: cover;
 }
 
-.gold-detail-thumb:hover,
-.gold-detail-thumb.active {
-  opacity: 1;
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(184, 155, 94, 0.35);
+.clean-detail-info {
+  border: 1px solid rgba(122, 71, 52, 0.18);
+  background: #fffdfb;
+  border-radius: 18px;
+  padding: 22px;
 }
 
-/* ===============================
-   INFO
-================================ */
-.gold-detail-info {
-  animation: fadeUp 0.9s ease forwards;
-}
-
-.gold-detail-collection {
-  font-size: 12px;
-  letter-spacing: 3px;
+.gold-detail-kicker {
+  margin: 0 0 6px;
+  font-size: 11px;
+  color: #9b5f46;
+  letter-spacing: 1.8px;
   text-transform: uppercase;
-  color: #b89b5e;
-  margin-bottom: 10px;
 }
 
-.gold-detail-info h3 {
-  font-family: "Playfair Display", serif;
-  font-size: 34px;
-  font-weight: 500;
-  color: #3a2e12;
-  margin-bottom: 18px;
+.gold-detail-title {
+  margin: 0;
+  color: #3b2a22;
+  font-size: 42px;
+  line-height: 1.05;
 }
 
-.gold-detail-views {
-  color: #9b8451;
-  font-size: 14px;
-  margin-bottom: 26px;
+.gold-detail-sub {
+  margin: 10px 0 0;
+  color: #7d6758;
 }
 
-.gold-detail-desc-title {
-  font-size: 12px;
-  letter-spacing: 2px;
+.gold-detail-ledger {
+  margin-top: 14px;
+  border-top: 1px solid rgba(122, 71, 52, 0.18);
+  border-bottom: 1px solid rgba(122, 71, 52, 0.18);
+  padding: 12px 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.gold-detail-ledger span {
+  font-size: 11px;
+  color: #8b7263;
   text-transform: uppercase;
-  color: #b89b5e;
-  margin-bottom: 8px;
+  letter-spacing: 1px;
 }
 
-.gold-detail-desc {
-  color: #5c4a25;
-  font-size: 15px;
-  line-height: 1.9;
-  margin-bottom: 36px;
+.gold-detail-ledger p {
+  margin: 3px 0 0;
+  color: #4a2f24;
+  font-weight: 700;
+}
+
+.gold-note-section {
+  margin-top: 14px;
+}
+
+.gold-note-section h4 {
+  margin: 0 0 8px;
+  color: #3f2b22;
+}
+
+.gold-note-group {
+  margin-top: 10px;
+}
+
+.gold-note-group > span {
+  display: block;
+  margin-bottom: 6px;
+  color: #8a7363;
+  font-size: 12px;
+}
+
+.gold-note-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.gold-note-chips em {
+  font-style: normal;
+  font-size: 12px;
+  color: #6f4a39;
+  border: 1px solid rgba(122, 71, 52, 0.25);
+  background: #fff7f1;
+  border-radius: 999px;
+  padding: 6px 10px;
+}
+
+.gold-detail-specs {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.gold-detail-specs span {
+  display: block;
+  font-size: 11px;
+  color: #8b7263;
+  text-transform: uppercase;
+}
+
+.gold-detail-specs p {
+  margin: 4px 0 0;
+  color: #4a2f24;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.gold-detail-primary-btn {
+  width: 100%;
+  margin-top: 16px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #c27a5d, #7a4734);
+  color: #fff9f5;
+  padding: 14px 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.gold-detail-service-row {
+  margin-top: 11px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: #806b5c;
+  font-size: 12px;
+}
+
+.gold-detail-about {
+  margin-top: 14px;
+  border-radius: 12px;
+  background: #f8eee6;
+  padding: 14px;
+}
+
+.gold-detail-about h4 {
+  margin: 0 0 8px;
+  color: #4a2f24;
+}
+
+.gold-detail-about ul {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 6px;
+}
+
+.gold-detail-about li {
+  color: #67574a;
+  font-size: 13px;
+}
+
+.gold-detail-foot {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
 }
 
 .gold-detail-price {
-  font-family: "Playfair Display", serif;
-  font-size: 32px;
-  color: #3a2e12;
-  margin-bottom: 30px;
+  margin: 0;
+  color: #4a2f24;
+  font-size: 34px;
 }
 
-.gold-detail-add {
-  font-size: 14px;
+.gold-detail-back {
+  border: 1px solid rgba(122, 71, 52, 0.4);
+  border-radius: 999px;
+  background: transparent;
+  color: #5a3e31;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.gold-detail-back:hover {
+  background: #7a4734;
+  color: #fff7f2;
+}
+
+@media (max-width: 1024px) {
+  .gold-soft-header-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gold-detail-main {
+    grid-template-columns: 1fr;
+  }
+
+  .gold-detail-main-img {
+    height: 460px;
+  }
+}
+
+@media (max-width: 768px) {
+  .gold-soft-perfumes {
+    padding: 58px 16px 80px;
+  }
+
+  .gold-soft-image {
+    height: 340px;
+  }
+
+  .gold-detail-main-img {
+    height: 320px;
+  }
+
+  .gold-detail-specs,
+  .gold-detail-ledger {
+    grid-template-columns: 1fr;
+  }
+
+  .gold-detail-title {
+    font-size: 34px;
+  }
 }

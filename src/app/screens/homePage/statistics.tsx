@@ -6,7 +6,7 @@ export default function Statistics() {
   return (
     <Box
       sx={{
-        background: "linear-gradient(180deg, #2c2929 0%, #2c2a2a 100%)",
+        background: "linear-gradient(180deg, #4a2f24 0%, #2f1f18 100%)",
         py: { xs: 6, md: 8 },
       }}
     >
@@ -66,7 +66,7 @@ function StatItem({ icon, title, subtitle }: any) {
         transition: "all 0.3s ease",
         "&:hover img": {
           transform: "scale(1.1)",
-          filter: "drop-shadow(0 0 12px rgba(212,175,55,0.6))",
+          filter: "drop-shadow(0 0 12px rgba(194,122,93,0.55))",
         },
       }}
     >
@@ -84,7 +84,7 @@ function StatItem({ icon, title, subtitle }: any) {
 
       <Typography
         sx={{
-          color: "#D4AF37", // luxury gold
+          color: "#f4d7c8",
           fontWeight: 600,
           letterSpacing: "0.5px",
           fontSize: "1rem",
@@ -95,7 +95,7 @@ function StatItem({ icon, title, subtitle }: any) {
 
       <Typography
         sx={{
-          color: "#cfcfcf",
+          color: "#f1dbcf",
           fontSize: "0.85rem",
           maxWidth: 180,
           lineHeight: 1.5,
@@ -112,7 +112,7 @@ function LuxuryDivider() {
     <Divider
       height="70"
       width="1"
-      bg="linear-gradient(180deg, transparent, #D4AF37, transparent)"
+      bg="linear-gradient(180deg, transparent, #c27a5d, transparent)"
     />
   );
 }

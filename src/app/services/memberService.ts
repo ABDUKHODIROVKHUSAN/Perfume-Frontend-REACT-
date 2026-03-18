@@ -8,6 +8,18 @@ class MemberService {
     this.path = serverApi
   }
 
+  private normalizeMember(member: any): Member {
+    if (!member) return member as Member;
+
+    // Backend currently may return legacy keys: memberAdress/memberDescription.
+    // Normalize them for consistent frontend usage.
+    return {
+      ...member,
+      memberAddress: member.memberAddress ?? member.memberAdress ?? "",
+      memberDesc: member.memberDesc ?? member.memberDescription ?? "",
+    } as Member;
+  }
+
   public async getStore(): Promise<Member> {
     try {
       const url = this.path + "/member/store";
@@ -24,7 +36,7 @@ class MemberService {
     try {
       const url = this.path + "/member/signup";
       const result = await axios.post(url, input, { withCredentials: true })
-      const member: Member = result.data.member;
+      const member: Member = this.normalizeMember(result.data.member);
 
       localStorage.setItem("memberData", JSON.stringify(member));
 
@@ -40,7 +52,7 @@ class MemberService {
     try {
       const url = this.path + "/member/login";
       const result = await axios.post(url, input, { withCredentials: true })
-      const member: Member = result.data.member;
+      const member: Member = this.normalizeMember(result.data.member);
       localStorage.setItem("memberData", JSON.stringify(member));
 
       return member;
@@ -78,7 +90,9 @@ class MemberService {
     formData.append("memberNick", input.memberNick || "");
     formData.append("memberPhone", input.memberPhone || "");
     formData.append("memberAddress", input.memberAddress || "");
+    formData.append("memberAdress", input.memberAddress || "");
     formData.append("memberDesc", input.memberDesc || "");
+    formData.append("memberDescription", input.memberDesc || "");
     formData.append("memberImage", input.memberImage || "");
 
     const result = await axios(`${serverApi}/member/update`, {
@@ -91,7 +105,7 @@ class MemberService {
     })
     
     console.log("updateMember:", result);
-    const member:Member = result.data;
+    const member:Member = this.normalizeMember(result.data);
     localStorage.setItem("memberData", JSON.stringify(member))
     return member;
     

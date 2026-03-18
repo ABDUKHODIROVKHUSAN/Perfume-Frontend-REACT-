@@ -56,7 +56,7 @@
 }
 
 .home-navbar .navbar-container .menu .links .login-button {
-    background: #B28D65;
+    background: #7a4734;
     color: #f8f8ff;
     text-transform: none;
     font-weight: 600;
@@ -92,7 +92,7 @@
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: #d7b686;
+    background-color: #c27a5d;
     transform: scaleX(0);
     transform-origin: 0% 50%;
     transition: transform 250ms ease-in-out;
@@ -141,7 +141,7 @@
     width: 210px;
     height: 60px;
     border-radius: 4px;
-    background: #B28D65;
+    background: #7a4734;
     margin-top: 220px;
     text-align: center;
     font-family: 'Poppins', sans-serif;
@@ -154,7 +154,7 @@
 }
 
 .home-navbar .navbar-container .header-frame .detail .signup-button:hover {
-    background: #C6A77D;
+    background: #c27a5d;
 }
 
 /* Logo frame */
@@ -389,7 +389,7 @@
     font-size: 2.3rem;
     font-weight: 700;
     letter-spacing: 3px;
-    background: linear-gradient(135deg, #e3c08d, #b8945e);
+    background: linear-gradient(135deg, #c27a5d, #7a4734);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     white-space: nowrap;
@@ -425,14 +425,14 @@
 .other-navbar .underline {
     display: block;
     content: "";
-    border-bottom: solid 2px #d7b686;
+    border-bottom: solid 2px #c27a5d;
 }
 
 /* Hover underline animation */
 .other-navbar .hover-line:after {
     display: block;
     content: "";
-    border-bottom: solid 2px #d7b686;
+    border-bottom: solid 2px #c27a5d;
     transform: scaleX(0);
     transform-origin: 0% 50%;
     transition: transform 300ms ease;
@@ -444,13 +444,13 @@
 
 /* Hover color */
 .other-navbar .hover-line:hover a {
-    color: #e3c08d;
+    color: #f4d7c8;
 }
 
 /* ================= LOGIN BUTTON ================= */
 
 .other-navbar .navbar-container .menu .links .login-button {
-    background: linear-gradient(135deg, #e3c08d, #b8945e);
+    background: linear-gradient(135deg, #c27a5d, #7a4734);
     color: #000;
     font-weight: 700;
     letter-spacing: 1px;
@@ -473,7 +473,7 @@
     border-radius: 50%;
     object-fit: cover;
     cursor: pointer;
-    border: 2px solid #b8945e;
+    border: 2px solid #c27a5d;
     transition: all 0.35s ease;
     box-shadow: 0 8px 25px rgba(184, 148, 94, 0.35);
 }
@@ -505,7 +505,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    background: #d7b586;
+    background: #c27a5d;
     border-width: 1px 0px;
     border-style: solid;
     border-color: #343434;
@@ -546,7 +546,7 @@
     font-weight: 600;
     font-size: 15px;
     line-height: 22px;
-    color: #ae0000;
+    color: #9b5f46;
   }
   
   .basket-info-box

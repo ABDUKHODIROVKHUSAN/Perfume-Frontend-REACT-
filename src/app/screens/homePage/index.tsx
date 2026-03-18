@@ -27,7 +27,7 @@ export default function HomePage() {
     .getPerfumes({
         page: 1,
         limit: 4,
-        order: "productPrice",
+        order: "perfumePrice",
     })
         .then(data => {
             console.log("data passed here", data);
@@ -57,7 +57,3 @@ export default function HomePage() {
     </div>
   );
 }
-function dispatch(arg0: { payload: any; type: "homePage/setPopularPerfumes"; }) {
-    throw new Error("Function not implemented.");
-}
-

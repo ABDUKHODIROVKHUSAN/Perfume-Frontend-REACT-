@@ -10,11 +10,22 @@ const ContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         localStorage.removeItem("memberData");
     }
 
-    const [authMember, setAuthMember] = useState<Member | null>(
-        localStorage.getItem("memberData")
-            ? JSON.parse(localStorage.getItem("memberData") as string)
-            : null
-    );
+    const normalizeMember = (member: any): Member | null => {
+        if (!member) return null;
+        return {
+            ...member,
+            memberAddress: member.memberAddress ?? member.memberAdress ?? "",
+            memberDesc: member.memberDesc ?? member.memberDescription ?? "",
+        } as Member;
+    };
+
+    const [authMember, setAuthMember] = useState<Member | null>(() => {
+        const raw = localStorage.getItem("memberData");
+        if (!raw) return null;
+        const parsed = normalizeMember(JSON.parse(raw));
+        localStorage.setItem("memberData", JSON.stringify(parsed));
+        return parsed;
+    });
 
     const [ orderBuilder, setOrderBuilder ] = useState<Date>(new Date());
     console.log("== verify ==", authMember);

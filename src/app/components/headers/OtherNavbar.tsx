@@ -53,7 +53,7 @@ export function OtherNavbar(props: OtherNavbarProps) {
         zIndex: 1200,
         backdropFilter: "blur(12px)",
         background:
-          "linear-gradient(180deg, rgba(20,20,20,0.92), rgba(10,10,10,0.92))",
+          "linear-gradient(180deg, rgba(55,34,26,0.95), rgba(35,23,18,0.95))",
         boxShadow: "0 15px 40px rgba(0,0,0,0.45)",
       }}
     >
@@ -73,7 +73,7 @@ export function OtherNavbar(props: OtherNavbarProps) {
                 fontWeight: 700,
                 letterSpacing: 2,
                 background:
-                  "linear-gradient(135deg, #e3c08d, #b8945e)",
+                  "linear-gradient(135deg, #c27a5d, #7a4734)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
@@ -96,7 +96,7 @@ export function OtherNavbar(props: OtherNavbarProps) {
               >
                 <Typography
                   sx={{
-                    color: "#e8e8e8",
+                    color: "#f4e7de",
                     fontWeight: 500,
                     letterSpacing: 1,
                     position: "relative",
@@ -108,11 +108,11 @@ export function OtherNavbar(props: OtherNavbarProps) {
                       bottom: -6,
                       left: 0,
                       background:
-                        "linear-gradient(90deg, #e3c08d, #b8945e)",
+                        "linear-gradient(90deg, #c27a5d, #7a4734)",
                       transition: "0.3s ease",
                     },
                     "&:hover": {
-                      color: "#e3c08d",
+                      color: "#f4d7c8",
                     },
                     "&:hover:after": {
                       width: "100%",
@@ -128,10 +128,10 @@ export function OtherNavbar(props: OtherNavbarProps) {
               <NavLink to="/orders" style={{ textDecoration: "none" }}>
                 <Typography
                   sx={{
-                    color: "#e8e8e8",
+                    color: "#f4e7de",
                     fontWeight: 500,
                     letterSpacing: 1,
-                    "&:hover": { color: "#e3c08d" },
+                    "&:hover": { color: "#f4d7c8" },
                   }}
                 >
                   Orders
@@ -143,10 +143,10 @@ export function OtherNavbar(props: OtherNavbarProps) {
               <NavLink to="/member-page" style={{ textDecoration: "none" }}>
                 <Typography
                   sx={{
-                    color: "#e8e8e8",
+                    color: "#f4e7de",
                     fontWeight: 500,
                     letterSpacing: 1,
-                    "&:hover": { color: "#e3c08d" },
+                    "&:hover": { color: "#f4d7c8" },
                   }}
                 >
                   My Page
@@ -175,14 +175,13 @@ export function OtherNavbar(props: OtherNavbarProps) {
                   letterSpacing: 1,
                   color: "#000",
                   background:
-                    "linear-gradient(135deg, #e3c08d, #b8945e)",
+                    "linear-gradient(135deg, #c27a5d, #7a4734)",
                   boxShadow:
-                    "0 10px 25px rgba(184,148,94,0.45)",
+                    "0 10px 25px rgba(122,71,52,0.45)",
                   transition: "0.35s ease",
                   "&:hover": {
                     transform: "translateY(-2px)",
-                    boxShadow:
-                      "0 18px 40px rgba(184,148,94,0.65)",
+                    boxShadow: "0 18px 40px rgba(122,71,52,0.62)",
                   },
                 }}
               >
@@ -194,7 +193,7 @@ export function OtherNavbar(props: OtherNavbarProps) {
                 src={
                   authMember?.memberImage
                     ? `${serverApi}/${authMember.memberImage}`
-                    : "/img/black-chair.png"
+                    : "/icons/default-user.svg"
                 }
                 onClick={handleLogoutClick}
                 sx={{
@@ -203,12 +202,12 @@ export function OtherNavbar(props: OtherNavbarProps) {
                   borderRadius: "50%",
                   objectFit: "cover",
                   cursor: "pointer",
-                  border: "2px solid #b8945e",
+                  border: "2px solid #c27a5d",
                   transition: "0.3s ease",
                   "&:hover": {
                     transform: "scale(1.08)",
                     boxShadow:
-                      "0 0 0 6px rgba(184,148,94,0.25)",
+                      "0 0 0 6px rgba(122,71,52,0.25)",
                   },
                 }}
               />
@@ -224,7 +223,7 @@ export function OtherNavbar(props: OtherNavbarProps) {
                   mt: 1.5,
                   borderRadius: 3,
                   background:
-                    "linear-gradient(180deg, #1b1b1b, #121212)",
+                    "linear-gradient(180deg, #4a2f24, #2f1f18)",
                   color: "#fff",
                   boxShadow:
                     "0 20px 50px rgba(0,0,0,0.6)",
@@ -237,12 +236,12 @@ export function OtherNavbar(props: OtherNavbarProps) {
                   gap: 1,
                   "&:hover": {
                     background:
-                      "linear-gradient(90deg, rgba(227,192,141,0.15), transparent)",
+                      "linear-gradient(90deg, rgba(194,122,93,0.16), transparent)",
                   },
                 }}
               >
                 <ListItemIcon>
-                  <Logout sx={{ color: "#e3c08d" }} />
+                  <Logout sx={{ color: "#f2ccb9" }} />
                 </ListItemIcon>
                 Logout
               </MenuItem>
